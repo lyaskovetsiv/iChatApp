@@ -9,19 +9,29 @@
 /* Begin PBXBuildFile section */
 		04DD72AB28F464C400D01DD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD72AA28F464C400D01DD0 /* AppDelegate.swift */; };
 		04DD72AD28F464C400D01DD0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD72AC28F464C400D01DD0 /* SceneDelegate.swift */; };
-		04DD72AF28F464C400D01DD0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD72AE28F464C400D01DD0 /* ViewController.swift */; };
+		04DD72AF28F464C400D01DD0 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD72AE28F464C400D01DD0 /* AuthViewController.swift */; };
 		04DD72B428F464C600D01DD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04DD72B328F464C600D01DD0 /* Assets.xcassets */; };
 		04DD72B728F464C600D01DD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04DD72B528F464C600D01DD0 /* LaunchScreen.storyboard */; };
+		04DD72C128F4716300D01DD0 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD72C028F4716300D01DD0 /* UIButton+Extension.swift */; };
+		04DD72C328F4739200D01DD0 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD72C228F4739200D01DD0 /* UIFont+Extension.swift */; };
+		04DD72C628F474AA00D01DD0 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD72C528F474AA00D01DD0 /* UIColor+Extension.swift */; };
+		04DD72C828F47AD100D01DD0 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD72C728F47AD100D01DD0 /* UILabel+Extension.swift */; };
+		04DD72CA28F47B6700D01DD0 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD72C928F47B6700D01DD0 /* UIImageView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		04DD72A728F464C400D01DD0 /* iChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04DD72AA28F464C400D01DD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04DD72AC28F464C400D01DD0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		04DD72AE28F464C400D01DD0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		04DD72AE28F464C400D01DD0 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		04DD72B328F464C600D01DD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04DD72B628F464C600D01DD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04DD72B828F464C600D01DD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04DD72C028F4716300D01DD0 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		04DD72C228F4739200D01DD0 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		04DD72C528F474AA00D01DD0 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		04DD72C728F47AD100D01DD0 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		04DD72C928F47B6700D01DD0 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +66,8 @@
 			children = (
 				04DD72B828F464C600D01DD0 /* Info.plist */,
 				04DD72BE28F466F600D01DD0 /* App */,
-				04DD72AE28F464C400D01DD0 /* ViewController.swift */,
+				04DD72AE28F464C400D01DD0 /* AuthViewController.swift */,
+				04DD72C428F4749F00D01DD0 /* Extensions */,
 			);
 			path = iChatApp;
 			sourceTree = "<group>";
@@ -78,6 +89,26 @@
 				04DD72B528F464C600D01DD0 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		04DD72C428F4749F00D01DD0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				04DD72CB28F47E0500D01DD0 /* UIKit */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		04DD72CB28F47E0500D01DD0 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				04DD72C228F4739200D01DD0 /* UIFont+Extension.swift */,
+				04DD72C728F47AD100D01DD0 /* UILabel+Extension.swift */,
+				04DD72C928F47B6700D01DD0 /* UIImageView+Extension.swift */,
+				04DD72C028F4716300D01DD0 /* UIButton+Extension.swift */,
+				04DD72C528F474AA00D01DD0 /* UIColor+Extension.swift */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,7 +181,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04DD72AF28F464C400D01DD0 /* ViewController.swift in Sources */,
+				04DD72C328F4739200D01DD0 /* UIFont+Extension.swift in Sources */,
+				04DD72AF28F464C400D01DD0 /* AuthViewController.swift in Sources */,
+				04DD72C128F4716300D01DD0 /* UIButton+Extension.swift in Sources */,
+				04DD72CA28F47B6700D01DD0 /* UIImageView+Extension.swift in Sources */,
+				04DD72C828F47AD100D01DD0 /* UILabel+Extension.swift in Sources */,
+				04DD72C628F474AA00D01DD0 /* UIColor+Extension.swift in Sources */,
 				04DD72AB28F464C400D01DD0 /* AppDelegate.swift in Sources */,
 				04DD72AD28F464C400D01DD0 /* SceneDelegate.swift in Sources */,
 			);
