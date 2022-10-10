@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class AuthViewController: UIViewController {
     
@@ -22,7 +23,16 @@ class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .white
+        setupView()
+    }
+    
+    private func setupView(){
+        setupConstraits()
+    }
+    
+    private func setupConstraits(){
+        
     }
     
 }
