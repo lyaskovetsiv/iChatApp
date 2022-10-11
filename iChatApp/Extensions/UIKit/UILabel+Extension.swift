@@ -13,6 +13,7 @@ extension UILabel{
     convenience init(text: String){
         self.init()
         self.text = text
-        
+        self.font = .avenit20()
+        self.textColor = .black
     }
 }
