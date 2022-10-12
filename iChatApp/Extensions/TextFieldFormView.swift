@@ -28,7 +28,7 @@ class TextFieldFormView: UIView {
             make.top.equalTo(label.snp.bottom).inset(-5)
             make.left.equalTo(self.snp.left)
             make.right.equalTo(self.snp.right)
-            make.height.equalTo(20)
+            make.height.equalTo(30)
         }
         
         NSLayoutConstraint.activate([

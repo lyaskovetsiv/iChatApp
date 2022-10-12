@@ -38,6 +38,7 @@ class AuthViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         emailButton.addTarget(self, action: #selector(moveToSignUp), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(moveToLogin), for: .touchUpInside)
         
         let googleView = ButtonFormView(label: googleLabel, button: googleButton)
         let emailView = ButtonFormView(label: emailLabel, button: emailButton)
@@ -52,6 +53,11 @@ class AuthViewController: UIViewController {
     
     @objc private func moveToSignUp(){
         let vc = SignUpViewController()
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    @objc private func moveToLogin(){
+        let vc = LoginViewController()
         self.present(vc, animated: true, completion: nil)
     }
     

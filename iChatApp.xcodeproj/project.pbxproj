@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		045F8C9D28F711570012316D /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045F8C9C28F711570012316D /* UITextField+Extensions.swift */; };
+		045F8CC028F729360012316D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045F8CBF28F729360012316D /* LoginViewController.swift */; };
 		0465B98E28F5D80D00E51CAF /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0465B98D28F5D80D00E51CAF /* UIStackView+Extension.swift */; };
 		0465B99228F5E05300E51CAF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0465B99128F5E05300E51CAF /* SignUpViewController.swift */; };
 		0465B99428F5E20300E51CAF /* TextFieldFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0465B99328F5E20300E51CAF /* TextFieldFormView.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		045F8C9C28F711570012316D /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
+		045F8CBF28F729360012316D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0465B98D28F5D80D00E51CAF /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		0465B99128F5E05300E51CAF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0465B99328F5E20300E51CAF /* TextFieldFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldFormView.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 		045F8C9E28F711C50012316D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				045F8CBF28F729360012316D /* LoginViewController.swift */,
 				0465B99128F5E05300E51CAF /* SignUpViewController.swift */,
 				04DD72AE28F464C400D01DD0 /* AuthViewController.swift */,
 			);
@@ -280,6 +283,7 @@
 				04DD72C828F47AD100D01DD0 /* UILabel+Extension.swift in Sources */,
 				045F8C9D28F711570012316D /* UITextField+Extensions.swift in Sources */,
 				04DD72AB28F464C400D01DD0 /* AppDelegate.swift in Sources */,
+				045F8CC028F729360012316D /* LoginViewController.swift in Sources */,
 				04DD72AD28F464C400D01DD0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

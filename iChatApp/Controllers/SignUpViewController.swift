@@ -36,7 +36,7 @@ class SignUpViewController: UIViewController {
     private func setupView(){
         
         view.backgroundColor = .systemBackground
-        
+
         loginButton.addTarget(self, action: #selector(moveToLogin), for: .touchUpInside)
         
         let emailView = TextFieldFormView(label: emailLabel, textField: emailTextField)
@@ -54,8 +54,8 @@ class SignUpViewController: UIViewController {
     }
     
     @objc private func moveToLogin(){
-        //let vc = LoginViewController()
-        //self.present(vc, animated: true, completion: nil)
+        let vc = LoginViewController()
+        self.present(vc, animated: true, completion: nil)
     }
 }
 
@@ -78,7 +78,8 @@ extension SignUpViewController{
             make.right.equalTo(view.snp.right).inset(40)
         }
         
-        signUpButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        signUpButton.translatesAutoresizingMaskIntoConstraints = false
+        signUpButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         footStackView.translatesAutoresizingMaskIntoConstraints = false
         footStackView.snp.makeConstraints { make in
