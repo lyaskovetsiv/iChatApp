@@ -10,10 +10,13 @@ import UIKit
 
 extension UILabel{
     
-    convenience init(text: String){
+    convenience init(text: String,
+                     font: UIFont? = .avenit20(),
+                     textColor: UIColor? = .black){
+        
         self.init()
         self.text = text
-        self.font = .avenit20()
-        self.textColor = .black
+        self.font = font
+        self.textColor = textColor
     }
 }

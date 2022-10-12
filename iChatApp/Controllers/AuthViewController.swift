@@ -35,6 +35,10 @@ class AuthViewController: UIViewController {
     //MARK: --Functions
     private func setupView(){
         
+        view.backgroundColor = .systemBackground
+        
+        emailButton.addTarget(self, action: #selector(moveToSignUp), for: .touchUpInside)
+        
         let googleView = ButtonFormView(label: googleLabel, button: googleButton)
         let emailView = ButtonFormView(label: emailLabel, button: emailButton)
         let loginView = ButtonFormView(label: loginLabel, button: loginButton)
@@ -45,6 +49,17 @@ class AuthViewController: UIViewController {
         
         setupConstraits()
     }
+    
+    @objc private func moveToSignUp(){
+        let vc = SignUpViewController()
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+}
+
+
+//MARK: --Constraits
+extension AuthViewController{
     
     private func setupConstraits(){
         
@@ -60,12 +75,11 @@ class AuthViewController: UIViewController {
             make.top.equalTo(logoImageView.snp.bottom).inset(-50)
             make.centerX.equalTo(view.snp.centerX)
             make.left.equalTo(view.snp.left).inset(40)
-            make.right.equalTo(view.snp.right).inset(50)
+            make.right.equalTo(view.snp.right).inset(40)
         }
     }
     
 }
-
 
 
 //MARK: CANVAS mode
