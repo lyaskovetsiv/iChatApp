@@ -36,7 +36,8 @@ class SignUpViewController: UIViewController {
     private func setupView(){
         
         view.backgroundColor = .systemBackground
-
+        
+        signUpButton.addTarget(self, action: #selector(moveToRegister), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(moveToLogin), for: .touchUpInside)
         
         let emailView = TextFieldFormView(label: emailLabel, textField: emailTextField)
@@ -51,6 +52,11 @@ class SignUpViewController: UIViewController {
         view.addSubview(footStackView)
         
         setupConstraits()
+    }
+    
+    @objc private func moveToRegister(){
+        let vc = SetupProfileViewController()
+        self.present(vc, animated: true, completion: nil)
     }
     
     @objc private func moveToLogin(){

@@ -39,6 +39,8 @@ class LoginViewController: UIViewController {
         
         view.backgroundColor = .systemBackground
         
+        googleButton.customizeGoogleImage()
+        
         let googleView = ButtonFormView(label: googleLabel, button: googleButton)
         let emailView = TextFieldFormView(label: emailLabel, textField: emailTextField)
         let passwordView = TextFieldFormView(label: passwordLabel, textField: passwordTextField)

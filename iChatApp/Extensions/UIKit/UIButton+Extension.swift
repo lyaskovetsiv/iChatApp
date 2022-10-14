@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 extension UIButton{
     
@@ -31,6 +32,15 @@ extension UIButton{
             self.layer.shadowOffset = CGSize(width: 2.5, height: 2.5)
         }
         
-        
+    }
+    
+    func customizeGoogleImage(){
+        let image = UIImageView(with: UIImage(named: "google"), contentMode: .scaleAspectFit)
+        self.addSubview(image)
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.snp.makeConstraints { make in
+            make.centerY.equalTo(self.snp.centerY)
+            make.left.equalTo(self.snp.left).inset(40)
+        }
     }
 }
