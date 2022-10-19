@@ -11,9 +11,18 @@ class PeopleVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-
+        setupView()
     }
     
-
+    private func setupView(){
+        view.backgroundColor = .systemBackground
+        
+        setupSearch()
+    }
+    
+    private func setupSearch(){
+        let searchVC = UISearchController(searchResultsController: nil)
+        navigationItem.searchController = searchVC
+    }
+    
 }
