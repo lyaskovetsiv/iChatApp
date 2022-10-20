@@ -60,16 +60,21 @@ class ConversationsVC: UIViewController {
 //MARK: --DataSource
 extension ConversationsVC{
     
+    private func configure<T: ConfiguringCell>(cellType: T.Type, with value: MChat, for indexPath: IndexPath)->T{
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else
+        { fatalError("Unable to dequeue cellType")}
+        cell.configure(with: value)
+        return cell
+    }
+    
     private func setupDataSource(){
         dataSource = ChatDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, model in
-            guard let section = Section(rawValue: indexPath.section) else { fatalError("Unknown section")}
+            guard let section = ConversationsVC.Section(rawValue: indexPath.section) else { fatalError("Unknown section")}
             switch section {
                 case .activeChats:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ActiveChatCell.reuseIdentifier, for: indexPath) as! ActiveChatCell
-                    return cell
+                    return self.configure(cellType: ActiveChatCell.self, with: model, for: indexPath)
                 case .waitingChats:
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WaitingChatCell.reuseIdentifier, for: indexPath) as! WaitingChatCell
-                    return cell
+                    return self.configure(cellType: WaitingChatCell.self, with: model, for: indexPath)
             }
         })
     }
@@ -89,12 +94,12 @@ extension ConversationsVC{
     
     private func createLayout()->UICollectionViewLayout{
         let layout = UICollectionViewCompositionalLayout { sectionIndex, environment in
-            guard let section = Section(rawValue: sectionIndex) else {fatalError("Unknown section")}
+            guard let section = ConversationsVC.Section(rawValue: sectionIndex) else {fatalError("Unknown section")}
             switch section{
                 case .activeChats:
                     return self.createActiveChats()
                 case .waitingChats:
-                    return self.createIncommingChats()
+                    return self.createWaitingChats()
             }
         }
         return layout
@@ -106,21 +111,24 @@ extension ConversationsVC{
         group.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0)
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        
         return section
     }
     
-    private func createIncommingChats()->NSCollectionLayoutSection{
+    private func createWaitingChats()->NSCollectionLayoutSection{
         let item = CompositionalLayout.createItem(width: .fractionalWidth(1), height: .fractionalHeight(1), spacing: 5)
         let group = CompositionalLayout.createGroup(alignment: .horizontal, width: .fractionalWidth(1), height: .fractionalHeight(0.15), item: item, count: 4)
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 5)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         section.orthogonalScrollingBehavior = .continuous
+        
         return section
     }
+
 }
 
 
-//MARK: --SetupConstraits
+//MARK: --Constraits
 extension ConversationsVC{
     
     private func setupConstraits(){

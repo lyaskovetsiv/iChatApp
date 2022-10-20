@@ -8,36 +8,42 @@
 import UIKit
 import SnapKit
 
-class WaitingChatCell: UICollectionViewCell {
+class WaitingChatCell: UICollectionViewCell, ConfiguringCell {
     
     static let reuseIdentifier = "waitingChatCell"
-    
-    private var imageView: UIImageView?
+    private var imageView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .systemMint
-        
-        if let imageView = imageView {
-            
-            addSubview(imageView)
-            
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.snp.makeConstraints({ make in
-                make.top.equalTo(self.snp.top)
-                make.bottom.equalTo(self.snp.bottom)
-                make.left.equalTo(self.snp.left)
-                make.right.equalTo(self.snp.right)
-            })
-        }
+        self.layer.cornerRadius = 5
+    
+        addSubview(imageView)
+        setupConstraits()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCell(with image: UIImage){
-        
+    func configure(with value: MChat) {
+        imageView.image = value.userImage
+    }
+    
+}
+
+
+//MARK: --Constaraits
+extension WaitingChatCell{
+    
+    private func setupConstraits(){
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.snp.makeConstraints({ make in
+            make.top.equalTo(self.snp.top)
+            make.bottom.equalTo(self.snp.bottom)
+            make.left.equalTo(self.snp.left)
+            make.right.equalTo(self.snp.right)
+        })
     }
     
 }
