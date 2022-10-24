@@ -11,13 +11,12 @@ import SnapKit
 class WaitingChatCell: UICollectionViewCell, ConfiguringCell {
     
     static let reuseIdentifier = "waitingChatCell"
+    
     private var imageView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .systemMint
-        self.layer.cornerRadius = 5
-    
+        setupCell()
         addSubview(imageView)
         setupConstraits()
     }
@@ -26,8 +25,16 @@ class WaitingChatCell: UICollectionViewCell, ConfiguringCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with value: MChat) {
-        imageView.image = value.userImage
+    private func setupCell(){
+        backgroundColor = .systemMint
+        self.layer.cornerRadius = 5
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+    }
+    
+    func configure<U>(with value: U) where U : Hashable {
+        guard let chat = value as? MChat else {fatalError("Unknown kind of data")}
+        imageView.image = chat.userImage
     }
     
 }

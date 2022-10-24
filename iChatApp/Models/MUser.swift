@@ -7,8 +7,8 @@
 
 import Foundation
 import UIKit
-
-struct MUser: Hashable{
+ 
+struct MUser: Hashable {
     
     var id = UUID()
     var userName: String
@@ -20,6 +20,13 @@ struct MUser: Hashable{
     
     static func == (lhs: MUser, rhs: MUser)->Bool{
         return lhs.id == rhs.id
+    }
+    
+    func contains(text: String?)->Bool{
+        guard let text = text else {return true}
+        if text.isEmpty {return true}
+        let lowercasedText = text.lowercased()
+        return userName.lowercased().contains(lowercasedText)
     }
     
 }

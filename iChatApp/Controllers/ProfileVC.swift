@@ -12,9 +12,9 @@ class ProfileVC: UIViewController {
     
     private let containerView = UIView()
     private let imageView = UIImageView()
-    private let nameLabel = UILabel(text: "Peter Ben", font: .systemFont(ofSize: 20, weight: .regular))
-    private let aboutMeLabel = UILabel(text: "You have an opportunity with the best in the world!", font: .systemFont(ofSize: 16, weight: .light))
-    private let textField = UITextField()
+    private let nameLabel = UILabel(text: "Peter Ben", font: .systemFont(ofSize: 24, weight: .regular))
+    private let aboutMeLabel = UILabel(text: "You have an opportunity with the best in the world!", font: .systemFont(ofSize: 18, weight: .light))
+    private let textField = InsertableTextField()
     private var stackView: UIStackView!
     
     override func viewDidLoad() {
@@ -36,6 +36,7 @@ class ProfileVC: UIViewController {
     }
 
 }
+
 
 //MARK: --Constraits
 extension ProfileVC{
@@ -92,10 +93,14 @@ extension ProfileVC{
         
         aboutMeLabel.numberOfLines = 0
         
-        textField.layer.cornerRadius = 5
-        textField.backgroundColor = .white
-        textField.borderStyle = .roundedRect
-        textField.placeholder = "Say hello to this person.."
+        if let button = textField.rightView as? UIButton {
+            button.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
+        }
+        
+    }
+    
+    @objc private func sendMessage(){
+        
     }
 }
 
@@ -104,7 +109,7 @@ extension ProfileVC{
 //MARK: --Canvas
 import SwiftUI
 
-struct ViewControllerProvider: PreviewProvider{
+struct ProfileVCProvider: PreviewProvider{
     
     static var previews: some View {
         ContainerView()
@@ -122,5 +127,4 @@ struct ViewControllerProvider: PreviewProvider{
             
         }
     }
-    
 }

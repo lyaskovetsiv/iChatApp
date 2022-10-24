@@ -11,6 +11,7 @@ import SnapKit
 class ActiveChatCell: UICollectionViewCell, ConfiguringCell {
     
     static let reuseIdentifier = "activeChatCell"
+    
     let userImageView = UIImageView()
     let userName = UILabel(text: "", font: .laoSangamMN20())
     let userLastMessage = UILabel(text: "", font: .laoSangamMN18())
@@ -18,10 +19,7 @@ class ActiveChatCell: UICollectionViewCell, ConfiguringCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
-        
-        stackView = UIStackView(arrangedView: [userName,userLastMessage], spacing: 5, axis: .vertical)
-
+        setupCell()
         addSubview(userImageView)
         addSubview(stackView)
         setupConstraits()
@@ -31,7 +29,7 @@ class ActiveChatCell: UICollectionViewCell, ConfiguringCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupView(){
+    private func setupCell(){
         backgroundColor = .white
         self.layer.cornerRadius = 5
         self.layer.shadowColor = UIColor.systemGray.cgColor
@@ -39,13 +37,19 @@ class ActiveChatCell: UICollectionViewCell, ConfiguringCell {
         self.layer.shadowOpacity = 0.8
         self.layer.shadowOffset = CGSize(width: 2.5, height: 2.5)
         userImageView.backgroundColor = .systemGray
+        userImageView.contentMode = .scaleAspectFill
+        userImageView.clipsToBounds = true
+        stackView = UIStackView(arrangedView: [userName,userLastMessage], spacing: 5, axis: .vertical)
     }
     
-    func configure(with value: MChat) {
-        userImageView.image = value.userImage
-        userName.text = value.userName
-        userLastMessage.text = value.lastMessage
-    }    
+
+    func configure<U>(with value: U) where U : Hashable {
+        guard let chat = value as? MChat else {fatalError("Unkown kind of data")}
+        userImageView.image = chat.userImage
+        userName.text = chat.userName
+        userLastMessage.text = chat.lastMessage
+        
+    }
 }
 
 

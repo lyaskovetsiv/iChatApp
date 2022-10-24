@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct MChat: Hashable{
+struct MChat: Hashable {
     
     var id = UUID()
     var userName: String
