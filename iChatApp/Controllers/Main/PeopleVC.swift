@@ -43,6 +43,7 @@ class PeopleVC: UIViewController {
     private func setupSearch(){
         let searchVC = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchVC
+        searchVC.searchBar.delegate = self
     }
     
     private func setupCollectionView(){
