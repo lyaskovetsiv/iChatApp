@@ -62,9 +62,7 @@ extension PeopleVC{
             guard let section = PeopleVC.Section(rawValue: indexPath.section) else {fatalError("Unknown section")}
             switch section{
                 case .main:
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserCell.reuseIdentifier, for: indexPath) as? UserCell else { fatalError("Can't create User Cell")}
-                cell.configure(with: MUser(id: UUID(), userName: "Rebecca Hudson", userImage: UIImage(named: "girl")))
-                return cell
+                    return self.configure(collectionView: collectionView, cellType: UserCell.self, with: model, for: indexPath)
             }
         })
         

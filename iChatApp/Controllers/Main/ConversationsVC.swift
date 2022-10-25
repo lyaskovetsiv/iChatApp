@@ -31,7 +31,7 @@ class ConversationsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        setupDataSource()
+        createDataSource()
         updateDataSource()
     }
     
@@ -59,21 +59,14 @@ class ConversationsVC: UIViewController {
 //MARK: --DataSource
 extension ConversationsVC{
     
-    private func configure<T: ConfiguringCell>(cellType: T.Type, with value: MChat, for indexPath: IndexPath)->T{
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else
-        { fatalError("Unable to dequeue cellType")}
-        cell.configure(with: value)
-        return cell
-    }
-    
-    private func setupDataSource(){
+    private func createDataSource(){
         dataSource = ChatDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, model in
             guard let section = ConversationsVC.Section(rawValue: indexPath.section) else { fatalError("Unknown section")}
             switch section {
                 case .activeChats:
-                    return self.configure(cellType: ActiveChatCell.self, with: model, for: indexPath)
+                    return self.configure(collectionView: collectionView, cellType: ActiveChatCell.self, with: model, for: indexPath)
                 case .waitingChats:
-                    return self.configure(cellType: WaitingChatCell.self, with: model, for: indexPath)
+                    return self.configure(collectionView: collectionView, cellType: WaitingChatCell.self, with: model, for: indexPath)
             }
         })
         
@@ -85,7 +78,6 @@ extension ConversationsVC{
             sectionHeader.configure(with: section.description(), font: .laoSangamMN20()!, textColor: .systemGray)
             return sectionHeader
         }
-            
     }
     
     private func updateDataSource(){

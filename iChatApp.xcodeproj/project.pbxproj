@@ -23,6 +23,7 @@
 		0468B28928F9B2F7002DB71E /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468B28828F9B2F7002DB71E /* MainVC.swift */; };
 		0468B28B28F9B31B002DB71E /* PeopleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468B28A28F9B31B002DB71E /* PeopleVC.swift */; };
 		0468B28D28F9B34B002DB71E /* ConversationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468B28C28F9B34B002DB71E /* ConversationsVC.swift */; };
+		0473E02B29085BC900D0F097 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0473E02A29085BC900D0F097 /* UIViewController+Extension.swift */; };
 		04A3619629018F0D00B51981 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3619529018F0D00B51981 /* ProfileVC.swift */; };
 		04A361982901B69700B51981 /* ChatRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A361972901B69700B51981 /* ChatRequestVC.swift */; };
 		04AE645B2900627E008E53BF /* ConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE645A2900627E008E53BF /* ConfiguringCell.swift */; };
@@ -60,6 +61,7 @@
 		0468B28828F9B2F7002DB71E /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		0468B28A28F9B31B002DB71E /* PeopleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleVC.swift; sourceTree = "<group>"; };
 		0468B28C28F9B34B002DB71E /* ConversationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsVC.swift; sourceTree = "<group>"; };
+		0473E02A29085BC900D0F097 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		04A3619529018F0D00B51981 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		04A361972901B69700B51981 /* ChatRequestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequestVC.swift; sourceTree = "<group>"; };
 		04AE645A2900627E008E53BF /* ConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguringCell.swift; sourceTree = "<group>"; };
@@ -107,11 +109,7 @@
 		045F8C9E28F711C50012316D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0468B28828F9B2F7002DB71E /* MainVC.swift */,
-				0468B28A28F9B31B002DB71E /* PeopleVC.swift */,
-				0468B28C28F9B34B002DB71E /* ConversationsVC.swift */,
-				04A3619529018F0D00B51981 /* ProfileVC.swift */,
-				04A361972901B69700B51981 /* ChatRequestVC.swift */,
+				0473E02929085A4600D0F097 /* Main */,
 				0468B28728F9B248002DB71E /* SignUp&Login */,
 			);
 			path = Controllers;
@@ -126,6 +124,18 @@
 				04DD72AE28F464C400D01DD0 /* AuthViewController.swift */,
 			);
 			path = "SignUp&Login";
+			sourceTree = "<group>";
+		};
+		0473E02929085A4600D0F097 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				0468B28828F9B2F7002DB71E /* MainVC.swift */,
+				0468B28A28F9B31B002DB71E /* PeopleVC.swift */,
+				0468B28C28F9B34B002DB71E /* ConversationsVC.swift */,
+				04A3619529018F0D00B51981 /* ProfileVC.swift */,
+				04A361972901B69700B51981 /* ChatRequestVC.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		04C510DE2900151200C4DDF5 /* Models */ = {
@@ -223,6 +233,7 @@
 				04DD72C028F4716300D01DD0 /* UIButton+Extension.swift */,
 				0465B98D28F5D80D00E51CAF /* UIStackView+Extension.swift */,
 				045F8C9C28F711570012316D /* UITextField+Extensions.swift */,
+				0473E02A29085BC900D0F097 /* UIViewController+Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -358,6 +369,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0473E02B29085BC900D0F097 /* UIViewController+Extension.swift in Sources */,
 				04DD72C328F4739200D01DD0 /* UIFont+Extension.swift in Sources */,
 				0468B27E28F96F59002DB71E /* SegmentedFormView.swift in Sources */,
 				04DD72AF28F464C400D01DD0 /* AuthViewController.swift in Sources */,
