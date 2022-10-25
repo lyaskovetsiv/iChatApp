@@ -7,21 +7,81 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		043BF6322906974B00A7068C /* InsertableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BF6312906974B00A7068C /* InsertableTextField.swift */; };
+		043BF6342906A26100A7068C /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BF6332906A26100A7068C /* SectionHeaderView.swift */; };
+		043BF6362906B3B700A7068C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BF6352906B3B700A7068C /* UserCell.swift */; };
+		044145B928FEAE3C00891C94 /* CompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044145B828FEAE3C00891C94 /* CompositionalLayout.swift */; };
+		045F8C9D28F711570012316D /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045F8C9C28F711570012316D /* UITextField+Extensions.swift */; };
+		045F8CC028F729360012316D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045F8CBF28F729360012316D /* LoginViewController.swift */; };
+		0465B98E28F5D80D00E51CAF /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0465B98D28F5D80D00E51CAF /* UIStackView+Extension.swift */; };
+		0465B99228F5E05300E51CAF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0465B99128F5E05300E51CAF /* SignUpViewController.swift */; };
+		0465B99428F5E20300E51CAF /* TextFieldFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0465B99328F5E20300E51CAF /* TextFieldFormView.swift */; };
+		0468B27C28F96BE8002DB71E /* SetupProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468B27B28F96BE8002DB71E /* SetupProfileViewController.swift */; };
+		0468B27E28F96F59002DB71E /* SegmentedFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468B27D28F96F59002DB71E /* SegmentedFormView.swift */; };
+		0468B28428F97CA7002DB71E /* AddPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468B28328F97CA7002DB71E /* AddPhotoView.swift */; };
+		0468B28628F98457002DB71E /* UISegmentedControll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468B28528F98457002DB71E /* UISegmentedControll.swift */; };
+		0468B28928F9B2F7002DB71E /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468B28828F9B2F7002DB71E /* MainVC.swift */; };
+		0468B28B28F9B31B002DB71E /* PeopleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468B28A28F9B31B002DB71E /* PeopleVC.swift */; };
+		0468B28D28F9B34B002DB71E /* ConversationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468B28C28F9B34B002DB71E /* ConversationsVC.swift */; };
+		04A3619629018F0D00B51981 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3619529018F0D00B51981 /* ProfileVC.swift */; };
+		04A361982901B69700B51981 /* ChatRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A361972901B69700B51981 /* ChatRequestVC.swift */; };
+		04AE645B2900627E008E53BF /* ConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE645A2900627E008E53BF /* ConfiguringCell.swift */; };
+		04AE645D2900646C008E53BF /* MUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE645C2900646C008E53BF /* MUser.swift */; };
+		04C510DD290012A900C4DDF5 /* MChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C510DC290012A900C4DDF5 /* MChat.swift */; };
+		04C510E02900284C00C4DDF5 /* WaitingChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C510DF2900284C00C4DDF5 /* WaitingChatCell.swift */; };
+		04C510E329002A2000C4DDF5 /* ActiveChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C510E229002A2000C4DDF5 /* ActiveChatCell.swift */; };
 		04DD72AB28F464C400D01DD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD72AA28F464C400D01DD0 /* AppDelegate.swift */; };
 		04DD72AD28F464C400D01DD0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD72AC28F464C400D01DD0 /* SceneDelegate.swift */; };
-		04DD72AF28F464C400D01DD0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD72AE28F464C400D01DD0 /* ViewController.swift */; };
+		04DD72AF28F464C400D01DD0 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD72AE28F464C400D01DD0 /* AuthViewController.swift */; };
 		04DD72B428F464C600D01DD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04DD72B328F464C600D01DD0 /* Assets.xcassets */; };
 		04DD72B728F464C600D01DD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04DD72B528F464C600D01DD0 /* LaunchScreen.storyboard */; };
+		04DD72C128F4716300D01DD0 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD72C028F4716300D01DD0 /* UIButton+Extension.swift */; };
+		04DD72C328F4739200D01DD0 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD72C228F4739200D01DD0 /* UIFont+Extension.swift */; };
+		04DD72C828F47AD100D01DD0 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD72C728F47AD100D01DD0 /* UILabel+Extension.swift */; };
+		04DD72CA28F47B6700D01DD0 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD72C928F47B6700D01DD0 /* UIImageView+Extension.swift */; };
+		04DD72CD28F4815300D01DD0 /* ButtonFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD72CC28F4815300D01DD0 /* ButtonFormView.swift */; };
+		A94D899E366F25CDA2DF57FF /* Pods_iChatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D45A5C7B8ABE4FDAB4576DB6 /* Pods_iChatApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		043BF6312906974B00A7068C /* InsertableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertableTextField.swift; sourceTree = "<group>"; };
+		043BF6332906A26100A7068C /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		043BF6352906B3B700A7068C /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		044145B828FEAE3C00891C94 /* CompositionalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalLayout.swift; sourceTree = "<group>"; };
+		045F8C9C28F711570012316D /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
+		045F8CBF28F729360012316D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0465B98D28F5D80D00E51CAF /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
+		0465B99128F5E05300E51CAF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		0465B99328F5E20300E51CAF /* TextFieldFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldFormView.swift; sourceTree = "<group>"; };
+		0468B27B28F96BE8002DB71E /* SetupProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileViewController.swift; sourceTree = "<group>"; };
+		0468B27D28F96F59002DB71E /* SegmentedFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedFormView.swift; sourceTree = "<group>"; };
+		0468B28328F97CA7002DB71E /* AddPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoView.swift; sourceTree = "<group>"; };
+		0468B28528F98457002DB71E /* UISegmentedControll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISegmentedControll.swift; sourceTree = "<group>"; };
+		0468B28828F9B2F7002DB71E /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		0468B28A28F9B31B002DB71E /* PeopleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleVC.swift; sourceTree = "<group>"; };
+		0468B28C28F9B34B002DB71E /* ConversationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsVC.swift; sourceTree = "<group>"; };
+		04A3619529018F0D00B51981 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		04A361972901B69700B51981 /* ChatRequestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequestVC.swift; sourceTree = "<group>"; };
+		04AE645A2900627E008E53BF /* ConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguringCell.swift; sourceTree = "<group>"; };
+		04AE645C2900646C008E53BF /* MUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MUser.swift; sourceTree = "<group>"; };
+		04C510DC290012A900C4DDF5 /* MChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MChat.swift; sourceTree = "<group>"; };
+		04C510DF2900284C00C4DDF5 /* WaitingChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingChatCell.swift; sourceTree = "<group>"; };
+		04C510E229002A2000C4DDF5 /* ActiveChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveChatCell.swift; sourceTree = "<group>"; };
 		04DD72A728F464C400D01DD0 /* iChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04DD72AA28F464C400D01DD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04DD72AC28F464C400D01DD0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		04DD72AE28F464C400D01DD0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		04DD72AE28F464C400D01DD0 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		04DD72B328F464C600D01DD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04DD72B628F464C600D01DD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04DD72B828F464C600D01DD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04DD72C028F4716300D01DD0 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		04DD72C228F4739200D01DD0 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		04DD72C728F47AD100D01DD0 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		04DD72C928F47B6700D01DD0 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		04DD72CC28F4815300D01DD0 /* ButtonFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFormView.swift; sourceTree = "<group>"; };
+		D45A5C7B8ABE4FDAB4576DB6 /* Pods_iChatApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iChatApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D60E2C053CADE72A405AAB3B /* Pods-iChatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iChatApp.release.xcconfig"; path = "Target Support Files/Pods-iChatApp/Pods-iChatApp.release.xcconfig"; sourceTree = "<group>"; };
+		DDBCE242E2E9A8FEC10FB7FC /* Pods-iChatApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iChatApp.debug.xcconfig"; path = "Target Support Files/Pods-iChatApp/Pods-iChatApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +89,72 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A94D899E366F25CDA2DF57FF /* Pods_iChatApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		044145BA28FEAE4300891C94 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				044145B828FEAE3C00891C94 /* CompositionalLayout.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		045F8C9E28F711C50012316D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0468B28828F9B2F7002DB71E /* MainVC.swift */,
+				0468B28A28F9B31B002DB71E /* PeopleVC.swift */,
+				0468B28C28F9B34B002DB71E /* ConversationsVC.swift */,
+				04A3619529018F0D00B51981 /* ProfileVC.swift */,
+				04A361972901B69700B51981 /* ChatRequestVC.swift */,
+				0468B28728F9B248002DB71E /* SignUp&Login */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0468B28728F9B248002DB71E /* SignUp&Login */ = {
+			isa = PBXGroup;
+			children = (
+				0468B27B28F96BE8002DB71E /* SetupProfileViewController.swift */,
+				045F8CBF28F729360012316D /* LoginViewController.swift */,
+				0465B99128F5E05300E51CAF /* SignUpViewController.swift */,
+				04DD72AE28F464C400D01DD0 /* AuthViewController.swift */,
+			);
+			path = "SignUp&Login";
+			sourceTree = "<group>";
+		};
+		04C510DE2900151200C4DDF5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				04C510DC290012A900C4DDF5 /* MChat.swift */,
+				04AE645C2900646C008E53BF /* MUser.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		04C510E1290029FD00C4DDF5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				04AE645A2900627E008E53BF /* ConfiguringCell.swift */,
+				04C510E229002A2000C4DDF5 /* ActiveChatCell.swift */,
+				04C510DF2900284C00C4DDF5 /* WaitingChatCell.swift */,
+				043BF6352906B3B700A7068C /* UserCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		04DD729E28F464C400D01DD0 = {
 			isa = PBXGroup;
 			children = (
 				04DD72A928F464C400D01DD0 /* iChatApp */,
 				04DD72A828F464C400D01DD0 /* Products */,
+				8BD370665C53013B937DA862 /* Pods */,
+				BE85BCD638C47AB2181B7833 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,7 +171,11 @@
 			children = (
 				04DD72B828F464C600D01DD0 /* Info.plist */,
 				04DD72BE28F466F600D01DD0 /* App */,
-				04DD72AE28F464C400D01DD0 /* ViewController.swift */,
+				04DD72C428F4749F00D01DD0 /* Extensions */,
+				044145BA28FEAE4300891C94 /* Helpers */,
+				04C510DE2900151200C4DDF5 /* Models */,
+				04C510E1290029FD00C4DDF5 /* Cells */,
+				045F8C9E28F711C50012316D /* Controllers */,
 			);
 			path = iChatApp;
 			sourceTree = "<group>";
@@ -80,6 +199,51 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		04DD72C428F4749F00D01DD0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				04DD72CB28F47E0500D01DD0 /* UIKit */,
+				0468B28328F97CA7002DB71E /* AddPhotoView.swift */,
+				04DD72CC28F4815300D01DD0 /* ButtonFormView.swift */,
+				0468B27D28F96F59002DB71E /* SegmentedFormView.swift */,
+				0465B99328F5E20300E51CAF /* TextFieldFormView.swift */,
+				043BF6312906974B00A7068C /* InsertableTextField.swift */,
+				043BF6332906A26100A7068C /* SectionHeaderView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		04DD72CB28F47E0500D01DD0 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				04DD72C228F4739200D01DD0 /* UIFont+Extension.swift */,
+				0468B28528F98457002DB71E /* UISegmentedControll.swift */,
+				04DD72C928F47B6700D01DD0 /* UIImageView+Extension.swift */,
+				04DD72C728F47AD100D01DD0 /* UILabel+Extension.swift */,
+				04DD72C028F4716300D01DD0 /* UIButton+Extension.swift */,
+				0465B98D28F5D80D00E51CAF /* UIStackView+Extension.swift */,
+				045F8C9C28F711570012316D /* UITextField+Extensions.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		8BD370665C53013B937DA862 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DDBCE242E2E9A8FEC10FB7FC /* Pods-iChatApp.debug.xcconfig */,
+				D60E2C053CADE72A405AAB3B /* Pods-iChatApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BE85BCD638C47AB2181B7833 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D45A5C7B8ABE4FDAB4576DB6 /* Pods_iChatApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -87,9 +251,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04DD72BB28F464C600D01DD0 /* Build configuration list for PBXNativeTarget "iChatApp" */;
 			buildPhases = (
+				B6328E3849FA14BF1010A06F /* [CP] Check Pods Manifest.lock */,
 				04DD72A328F464C400D01DD0 /* Sources */,
 				04DD72A428F464C400D01DD0 /* Frameworks */,
 				04DD72A528F464C400D01DD0 /* Resources */,
+				44D5E45CBC7EB576D3A91B1D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -145,13 +311,83 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		44D5E45CBC7EB576D3A91B1D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iChatApp/Pods-iChatApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iChatApp/Pods-iChatApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iChatApp/Pods-iChatApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6328E3849FA14BF1010A06F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iChatApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		04DD72A328F464C400D01DD0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04DD72AF28F464C400D01DD0 /* ViewController.swift in Sources */,
+				04DD72C328F4739200D01DD0 /* UIFont+Extension.swift in Sources */,
+				0468B27E28F96F59002DB71E /* SegmentedFormView.swift in Sources */,
+				04DD72AF28F464C400D01DD0 /* AuthViewController.swift in Sources */,
+				0468B28928F9B2F7002DB71E /* MainVC.swift in Sources */,
+				043BF6322906974B00A7068C /* InsertableTextField.swift in Sources */,
+				04DD72C128F4716300D01DD0 /* UIButton+Extension.swift in Sources */,
+				04AE645D2900646C008E53BF /* MUser.swift in Sources */,
+				0468B28B28F9B31B002DB71E /* PeopleVC.swift in Sources */,
+				04DD72CD28F4815300D01DD0 /* ButtonFormView.swift in Sources */,
+				0465B99228F5E05300E51CAF /* SignUpViewController.swift in Sources */,
+				0465B99428F5E20300E51CAF /* TextFieldFormView.swift in Sources */,
+				043BF6342906A26100A7068C /* SectionHeaderView.swift in Sources */,
+				0468B28628F98457002DB71E /* UISegmentedControll.swift in Sources */,
+				04DD72CA28F47B6700D01DD0 /* UIImageView+Extension.swift in Sources */,
+				0468B28D28F9B34B002DB71E /* ConversationsVC.swift in Sources */,
+				0465B98E28F5D80D00E51CAF /* UIStackView+Extension.swift in Sources */,
+				04DD72C828F47AD100D01DD0 /* UILabel+Extension.swift in Sources */,
+				04A361982901B69700B51981 /* ChatRequestVC.swift in Sources */,
+				04A3619629018F0D00B51981 /* ProfileVC.swift in Sources */,
+				04AE645B2900627E008E53BF /* ConfiguringCell.swift in Sources */,
+				044145B928FEAE3C00891C94 /* CompositionalLayout.swift in Sources */,
+				0468B27C28F96BE8002DB71E /* SetupProfileViewController.swift in Sources */,
+				04C510E02900284C00C4DDF5 /* WaitingChatCell.swift in Sources */,
+				0468B28428F97CA7002DB71E /* AddPhotoView.swift in Sources */,
+				04C510DD290012A900C4DDF5 /* MChat.swift in Sources */,
+				04C510E329002A2000C4DDF5 /* ActiveChatCell.swift in Sources */,
+				045F8C9D28F711570012316D /* UITextField+Extensions.swift in Sources */,
 				04DD72AB28F464C400D01DD0 /* AppDelegate.swift in Sources */,
+				043BF6362906B3B700A7068C /* UserCell.swift in Sources */,
+				045F8CC028F729360012316D /* LoginViewController.swift in Sources */,
 				04DD72AD28F464C400D01DD0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,6 +524,7 @@
 		};
 		04DD72BC28F464C600D01DD0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDBCE242E2E9A8FEC10FB7FC /* Pods-iChatApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -316,6 +553,7 @@
 		};
 		04DD72BD28F464C600D01DD0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D60E2C053CADE72A405AAB3B /* Pods-iChatApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
