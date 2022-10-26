@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0422D41D2909165B00F9F223 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0422D41C2909165B00F9F223 /* GoogleService-Info.plist */; };
 		043BF6322906974B00A7068C /* InsertableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BF6312906974B00A7068C /* InsertableTextField.swift */; };
 		043BF6342906A26100A7068C /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BF6332906A26100A7068C /* SectionHeaderView.swift */; };
 		043BF6362906B3B700A7068C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BF6352906B3B700A7068C /* UserCell.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0422D41C2909165B00F9F223 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		043BF6312906974B00A7068C /* InsertableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertableTextField.swift; sourceTree = "<group>"; };
 		043BF6332906A26100A7068C /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		043BF6352906B3B700A7068C /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				04DD72B828F464C600D01DD0 /* Info.plist */,
+				0422D41C2909165B00F9F223 /* GoogleService-Info.plist */,
 				04DD72BE28F466F600D01DD0 /* App */,
 				04DD72C428F4749F00D01DD0 /* Extensions */,
 				044145BA28FEAE4300891C94 /* Helpers */,
@@ -317,6 +320,7 @@
 			files = (
 				04DD72B728F464C600D01DD0 /* LaunchScreen.storyboard in Resources */,
 				04DD72B428F464C600D01DD0 /* Assets.xcassets in Resources */,
+				0422D41D2909165B00F9F223 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
