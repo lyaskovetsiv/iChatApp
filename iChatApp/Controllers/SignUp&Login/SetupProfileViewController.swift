@@ -21,7 +21,6 @@ class SetupProfileViewController: UIViewController {
     private let sexControll = UISegmentedControl(first: "Male", second: "Female")
     private let goChattingButton = UIButton(title: "Go to charts!", titleColor: .white, backgroundColor: .black)
     private var mainStackView: UIStackView!
-    //TODO: Error label
     
     
     //MARK: --LifeCycleOfViewController
@@ -34,6 +33,8 @@ class SetupProfileViewController: UIViewController {
     private func setupView(){
         view.backgroundColor = .systemBackground
         
+        goChattingButton.addTarget(self, action: #selector(goChattingBtnTapped), for: .touchUpInside)
+        
         let fullNameView = TextFieldFormView(label: fullNameLabel, textField: fullNameTextField)
         let aboutView = TextFieldFormView(label: aboutLabel, textField: aboutTextField)
         let sexView = SegmentedFormView(label: sexLabel, segmentedControl: sexControll)
@@ -44,6 +45,10 @@ class SetupProfileViewController: UIViewController {
         view.addSubview(mainStackView)
 
         setupConstraits()
+    }
+    
+    @objc private func goChattingBtnTapped(){
+        
     }
 }
 

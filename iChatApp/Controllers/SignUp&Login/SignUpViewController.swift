@@ -8,6 +8,8 @@
 import UIKit
 import SnapKit
 
+
+
 class SignUpViewController: UIViewController {
 
     //MARK: --Properties
@@ -23,8 +25,8 @@ class SignUpViewController: UIViewController {
     private let onBoardLabel = UILabel(text: "Already onboard?")
     private let loginButton = UIButton(title: "Login", titleColor: .red, backgroundColor: .systemBackground, shadows: false)
     private var footStackView: UIStackView!
+    weak var delegate: AuthNavigationDelegate?
     
-    //TODO: Error label
     
     //MARK: --LifeCycleOfViewController
     override func viewDidLoad() {
@@ -32,13 +34,14 @@ class SignUpViewController: UIViewController {
         setupView()
     }
     
+    
     //MARK: --Functions
     private func setupView(){
         
         view.backgroundColor = .systemBackground
         
-        signUpButton.addTarget(self, action: #selector(moveToRegister), for: .touchUpInside)
-        loginButton.addTarget(self, action: #selector(moveToLogin), for: .touchUpInside)
+        signUpButton.addTarget(self, action: #selector(signUpBtnTapped), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(loginBtnTapped), for: .touchUpInside)
         
         let emailView = TextFieldFormView(label: emailLabel, textField: emailTextField)
         let passwordView = TextFieldFormView(label: passwordLabel, textField: passwordTextField)
@@ -54,15 +57,30 @@ class SignUpViewController: UIViewController {
         setupConstraits()
     }
     
-    @objc private func moveToRegister(){
+    @objc private func signUpBtnTapped(){
         let vc = SetupProfileViewController()
-        self.present(vc, animated: true, completion: nil)
+        //self.present(vc, animated: true, completion: nil)
+        AuthService.shared.createUser(email: emailTextField.text, password: passwordTextField.text, confirmPassword: repassTextField.text) { result in
+            switch result{
+                case .success(let user):
+                self.showAlert(title: "Sucess", message: "You've been successfully registred!") {
+                    self.present(SetupProfileViewController(), animated: true, completion: nil)
+                }
+                case .failure(let error):
+                    self.showAlert(title: "Error", message: error.localizedDescription)
+                    print(error)
+                
+            }
+        }
     }
     
-    @objc private func moveToLogin(){
-        let vc = LoginViewController()
-        self.present(vc, animated: true, completion: nil)
+    @objc private func loginBtnTapped(){
+        dismiss(animated: true) {
+            self.delegate?.toLoginVC()
+        }
     }
+    
+    
 }
 
 //MARK: --Constraits
@@ -94,7 +112,6 @@ extension SignUpViewController{
         }
     }
 }
-
 
 
 //MARK: CANVAS mode

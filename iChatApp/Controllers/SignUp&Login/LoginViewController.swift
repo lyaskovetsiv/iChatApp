@@ -8,23 +8,24 @@
 import UIKit
 import SnapKit
 
+
 class LoginViewController: UIViewController {
 
     //MARK: --Properties
-    let welcomeLabel = UILabel(text: "Welcome back!", font: .avenit26())
-    let orLabel = UILabel(text: "or")
-    let googleLabel = UILabel(text: "Login with")
-    let googleButton = UIButton(title: "Google", titleColor: .black, backgroundColor: .white, shadows: true)
-    let emailLabel = UILabel(text: "Email")
-    let emailTextField = UITextField(placeholderText: "Enter your email")
-    let passwordLabel = UILabel(text: "Password")
-    let passwordTextField = UITextField(placeholderText: "Enter your password")
-    let loginButton = UIButton(title: "Login", titleColor: .white, backgroundColor: .black)
-    let signUpLabel = UILabel(text: "Need an account?")
-    let signUpButton = UIButton(title: "Sign Up", titleColor: .red, backgroundColor: .systemBackground)
-    
-    var mainStackView: UIStackView!
-    var bottomStackView: UIStackView!
+    private let welcomeLabel = UILabel(text: "Welcome back!", font: .avenit26())
+    private let orLabel = UILabel(text: "or")
+    private let googleLabel = UILabel(text: "Login with")
+    private let googleButton = UIButton(title: "Google", titleColor: .black, backgroundColor: .white, shadows: true)
+    private let emailLabel = UILabel(text: "Email")
+    private let emailTextField = UITextField(placeholderText: "Enter your email")
+    private let passwordLabel = UILabel(text: "Password")
+    private let passwordTextField = UITextField(placeholderText: "Enter your password")
+    private let loginButton = UIButton(title: "Login", titleColor: .white, backgroundColor: .black)
+    private let signUpLabel = UILabel(text: "Need an account?")
+    private let signUpButton = UIButton(title: "Sign Up", titleColor: .red, backgroundColor: .systemBackground)
+    private var mainStackView: UIStackView!
+    private var bottomStackView: UIStackView!
+    weak var delegate: AuthNavigationDelegate?
     
     
     //MARK: --LifeCycleOfViewController
@@ -40,6 +41,9 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         googleButton.customizeGoogleImage()
+        loginButton.addTarget(self, action: #selector(loginBtnTapped), for: .touchUpInside)
+        googleButton.addTarget(self, action: #selector(googleBtnTapped), for: .touchUpInside)
+        signUpButton.addTarget(self, action: #selector(signUpBtnTapped), for: .touchUpInside)
         
         let googleView = ButtonFormView(label: googleLabel, button: googleButton)
         let emailView = TextFieldFormView(label: emailLabel, textField: emailTextField)
@@ -53,6 +57,31 @@ class LoginViewController: UIViewController {
         
         setupConstraits()
     }
+    
+    @objc private func googleBtnTapped(){
+        
+    }
+    
+    @objc private func loginBtnTapped(){
+        AuthService.shared.loginIn(email: emailTextField.text, password: passwordTextField.text) { result in
+            switch result{
+                case .success(let user):
+                    self.showAlert(title: "Success", message: "You have been successfully logIn")
+                    //Добавить проверку на наличие данных в firebase, если они есть то перейти на MainVC, если нет, то перейти на SetupProfileViewController
+                case .failure(let error):
+                    self.showAlert(title: "Error", message: error.localizedDescription)
+                    print(error)
+            }
+        }
+    }
+    
+    @objc private func signUpBtnTapped(){
+        dismiss(animated: true) {
+            self.delegate?.toSignUpVC()
+        }
+    }
+    
+    
     
 }
 

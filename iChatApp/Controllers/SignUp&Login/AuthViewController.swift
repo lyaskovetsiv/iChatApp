@@ -12,14 +12,15 @@ class AuthViewController: UIViewController {
     
     //MARK: --Properties
     private let logoImageView = UIImageView(with: UIImage(named: "logo"), contentMode: .scaleAspectFit)
-    
     private let googleLabel = UILabel(text: "Get started with ")
     private let emailLabel = UILabel(text: "Or sign with ")
     private let loginLabel = UILabel(text: "Already on board? ")
-
     private let googleButton = UIButton(title: "Google", titleColor: .black, backgroundColor: .white, shadows: true)
     private let emailButton = UIButton(title: "Email", titleColor: .black, backgroundColor: .white, shadows: true)
     private let loginButton = UIButton(title: "Login", titleColor: .white, backgroundColor: .black, shadows: false)
+    
+    private let loginVC = LoginViewController()
+    private let signUpVC = SignUpViewController()
     private var stackView: UIStackView!
     
     
@@ -29,6 +30,9 @@ class AuthViewController: UIViewController {
         // Do any additional setup after loading the view.
         view.backgroundColor = .white
         setupView()
+        
+        loginVC.delegate = self
+        signUpVC.delegate = self
     }
     
     
@@ -38,8 +42,9 @@ class AuthViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         googleButton.customizeGoogleImage()
-        emailButton.addTarget(self, action: #selector(moveToSignUp), for: .touchUpInside)
-        loginButton.addTarget(self, action: #selector(moveToLogin), for: .touchUpInside)
+        emailButton.addTarget(self, action: #selector(emailBtnTapped), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(loginBtnTapped), for: .touchUpInside)
+        googleButton.addTarget(self, action: #selector(googleBtnTapped), for: .touchUpInside)
         
         let googleView = ButtonFormView(label: googleLabel, button: googleButton)
         let emailView = ButtonFormView(label: emailLabel, button: emailButton)
@@ -52,16 +57,32 @@ class AuthViewController: UIViewController {
         setupConstraits()
     }
     
-    @objc private func moveToSignUp(){
-        let vc = SignUpViewController()
-        self.present(vc, animated: true, completion: nil)
+    @objc private func emailBtnTapped(){
+        self.present(signUpVC, animated: true, completion: nil)
     }
     
-    @objc private func moveToLogin(){
-        let vc = LoginViewController()
-        self.present(vc, animated: true, completion: nil)
+    @objc private func loginBtnTapped(){
+        self.present(loginVC, animated: true, completion: nil)
     }
     
+    @objc private func googleBtnTapped(){
+        
+    }
+    
+}
+
+
+//MARK: --AuthNavigationDelegate
+extension AuthViewController: AuthNavigationDelegate{
+    
+    func toLoginVC() {
+        present(loginVC, animated: true, completion: nil)
+    }
+    
+    func toSignUpVC() {
+        present(signUpVC, animated: true, completion: nil)
+    }
+
 }
 
 
