@@ -15,7 +15,17 @@ class PeopleVC: UIViewController {
     
     private var collectionView: UICollectionView!
     private var dataSource: PeopleDataSource!
+    private let currentUser: MUser!
     private var users = [MUser]()
+    
+    init(with currentUser: MUser){
+        self.currentUser = currentUser
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +36,7 @@ class PeopleVC: UIViewController {
     
     private func setupView(){
         view.backgroundColor = .systemBackground
+        navigationItem.title = currentUser.userName
         setupSearch()
         setupCollectionView()
         setupConstraits()
@@ -160,23 +171,23 @@ extension PeopleVC{
 
 
 //MARK: --Canvas
-import SwiftUI
-struct PeopleVCProvider: PreviewProvider{
-    
-    static var previews: some View {
-        ContainerView()
-    }
-    
-    struct ContainerView: UIViewControllerRepresentable{
-        
-        let viewController = PeopleVC()
-        
-        func makeUIViewController(context: Context) -> PeopleVC {
-            return viewController
-        }
-        
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-            
-        }
-    }
-}
+//import SwiftUI
+//struct PeopleVCProvider: PreviewProvider{
+//    
+//    static var previews: some View {
+//        ContainerView()
+//    }
+//    
+//    struct ContainerView: UIViewControllerRepresentable{
+//        
+//        let viewController = PeopleVC()
+//        
+//        func makeUIViewController(context: Context) -> PeopleVC {
+//            return viewController
+//        }
+//        
+//        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+//            
+//        }
+//    }
+//}

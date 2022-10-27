@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import FirebaseFirestore
  
 struct MUser: Hashable {
     
@@ -16,6 +17,32 @@ struct MUser: Hashable {
     var sex: String
     var description: String
     var userImage: String
+    
+    init(id: String, username: String, email: String, sex: String, description: String, avatarStringUrl: String){
+        self.id = id
+        self.userName = username
+        self.email = email
+        self.sex = sex
+        self.description = description
+        self.userImage = avatarStringUrl
+    }
+    
+    init?(document: DocumentSnapshot){
+        guard let data = document.data() else { return nil}
+        guard let id = data["id"] as? String else {return nil}
+        guard let username = data["username"] as? String else {return nil}
+        guard let email = data["email"] as? String else {return nil}
+        guard let sex = data["sex"] as? String else {return nil}
+        guard let description = data["description"] as? String else {return nil}
+        guard let avatarStringUrl = data["avatarStringURL"] as? String else {return nil}
+        
+        self.id = id
+        self.userName = username
+        self.email = email
+        self.sex = sex
+        self.description = description
+        self.userImage = avatarStringUrl
+    }
     
     func hash(into hasher: inout Hasher){
         hasher.combine(id)

@@ -61,7 +61,6 @@ class SignUpViewController: UIViewController {
                 case .failure(let error):
                     self.showAlert(title: "Error", message: error.localizedDescription)
                     print(error)
-                
             }
         }
     }

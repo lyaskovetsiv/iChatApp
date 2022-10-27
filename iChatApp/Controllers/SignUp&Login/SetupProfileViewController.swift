@@ -62,9 +62,11 @@ class SetupProfileViewController: UIViewController {
                                             avatarStringURL: nil,
                                             description: aboutTextField.text) { result in
             switch result{
-            case .success(_):
+            case .success(let mUser):
                 self.showAlert(title: "Success", message: "Good chatting!") {
-                //Переход в личный кабинет
+                    let mainVC = MainVC(with: mUser)
+                    mainVC.modalPresentationStyle = .fullScreen
+                    self.present(mainVC, animated: true, completion: nil)
                 }
             case .failure(let error):
                 self.showAlert(title: "Error", message: error.localizedDescription)

@@ -61,8 +61,19 @@ class LoginViewController: UIViewController {
             switch result{
                 case .success(let user):
                     self.showAlert(title: "Success", message: "You have been successfully logIn")
-                    //Добавить проверку на наличие данных в firebase, если они есть то перейти на MainVC, если нет, то перейти на SetupProfileViewController
-                print(user)
+                    FirestoreService.shared.getUser(user: user) { result in
+                        switch result{
+                        case .success(let mUser):
+                            let mainVC = MainVC(with: mUser)
+                            mainVC.modalPresentationStyle = .fullScreen
+                            self.present(mainVC, animated: true, completion: nil)
+                        case .failure(_):
+                            //TODO: Может быть через презент?
+                            self.view.window?.rootViewController = SetupProfileViewController(with: user)
+                            self.view.window?.makeKeyAndVisible()
+                        }
+                    }
+                
                 case .failure(let error):
                     self.showAlert(title: "Error", message: error.localizedDescription)
                     print(error)

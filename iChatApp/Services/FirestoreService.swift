@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 import FirebaseFirestore
 
 class FirestoreService{
@@ -24,13 +25,14 @@ class FirestoreService{
         }
         
        let mUser = MUser(id: id,
-                         userName: username!,
+                         username: username!,
                          email: email!,
                          sex: sex!,
                          description: description!,
-                         userImage: "not exist")
+                         avatarStringUrl: "not exist")
         
-        db.collection("users").document(mUser.id).setData(["username": username!,
+        db.collection("users").document(mUser.id).setData(["id": id,
+                                                           "username": username!,
                                                            "email": email!,
                                                            "sex": sex!,
                                                            "description": description!,
@@ -43,6 +45,24 @@ class FirestoreService{
                 completionBlock(.success(mUser))
             }
         }
+    }
+    
+    func getUser(user: User, completionBlock: @escaping (Result<MUser, Error>)->Void){
         
+        let document = db.collection("users").document(user.uid)
+  
+        document.getDocument { document, error in
+            
+            guard let document = document else {
+                completionBlock(.failure(UserErrors.canNotGetUserData))
+                return
+            }
+            
+            guard let mUser = MUser(document: document) else {
+                completionBlock(.failure(UserErrors.canNotUnwrapToMUser))
+                return
+            }
+            completionBlock(.success(mUser))
+        }
     }
 }

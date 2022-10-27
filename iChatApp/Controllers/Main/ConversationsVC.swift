@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import FirebaseAuth
 
 fileprivate typealias ChatDataSource = UICollectionViewDiffableDataSource<ConversationsVC.Section, MChat>
 fileprivate typealias ChatSnapShot = NSDiffableDataSourceSnapshot<ConversationsVC.Section, MChat>
@@ -15,6 +16,7 @@ class ConversationsVC: UIViewController {
     
     private var collectionView: UICollectionView!
     private var dataSource: ChatDataSource!
+    private let currentUser: MUser!
     
     private let activeChats = [MChat(userName: "Aleksey", userImage: UIImage(named: "man"), lastMessage: "How are you?"),
                                MChat(userName: "Nina", userImage: UIImage(named: "girl"),  lastMessage: "So funny)"),
@@ -27,7 +29,16 @@ class ConversationsVC: UIViewController {
                                MChat(userName: "John", userImage: UIImage(named: "man"),  lastMessage: "Let's go!"),
                                MChat(userName: "Rebecca", userImage: UIImage(named: "girl"),  lastMessage: "Are you hungry?")
     ]
-     
+    
+    init(with currentUser: MUser){
+        self.currentUser = currentUser
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -37,6 +48,7 @@ class ConversationsVC: UIViewController {
     
     private func setupView(){
         view.backgroundColor = .systemBackground
+        navigationItem.title = currentUser.userName
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(logOutTapped))
         setupCollectionView()
         setupConstraits()
@@ -51,7 +63,22 @@ class ConversationsVC: UIViewController {
     }
     
     @objc private func logOutTapped(){
-        print("Log out..")
+        let vc = UIAlertController(title: "Quit?", message: "Do you really want to sign out?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "No", style: .default, handler: nil)
+        let okAction = UIAlertAction(title: "Yes", style: .destructive) { _ in
+            do{
+                try Auth.auth().signOut()
+                self.view.window?.rootViewController = AuthViewController()
+                self.view.window?.makeKeyAndVisible()
+            }
+            catch{
+                print("Can't sign out: \(error.localizedDescription)")
+            }
+        }
+        
+        vc.addAction(cancelAction)
+        vc.addAction(okAction)
+        self.present(vc, animated: true, completion: nil)
     }
     
 }
@@ -174,26 +201,26 @@ extension ConversationsVC{
 
 
 //MARK: --Canvas
-import SwiftUI
-struct ConversationsVCProvider: PreviewProvider{
-    
-    static var previews: some View {
-        ContainerView()
-    }
-    
-    struct ContainerView: UIViewControllerRepresentable{
-        
-        let viewController = ConversationsVC()
-        
-        func makeUIViewController(context: Context) -> ConversationsVC {
-            return viewController
-        }
-        
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-            
-        }
-    }
-}
+//import SwiftUI
+//struct ConversationsVCProvider: PreviewProvider{
+//
+//    static var previews: some View {
+//        ContainerView()
+//    }
+//
+//    struct ContainerView: UIViewControllerRepresentable{
+//
+//        let viewController = ConversationsVC()
+//
+//        func makeUIViewController(context: Context) -> ConversationsVC {
+//            return viewController
+//        }
+//
+//        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+//
+//        }
+//    }
+//}
 
 
 

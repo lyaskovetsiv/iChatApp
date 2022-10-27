@@ -6,16 +6,28 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class MainVC: UITabBarController {
-
+    
+    private let currentUser: MUser!
+    
+    init(with currentUser: MUser){
+        self.currentUser = currentUser
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         tabBar.tintColor = .label
         
-        let peopleVC = PeopleVC()
-        let conversationsVC = ConversationsVC()
+        let peopleVC = PeopleVC(with: currentUser)
+        let conversationsVC = ConversationsVC(with: currentUser)
         let peopleImage = UIImage(systemName: "person.2")
         let conversationImage = UIImage(systemName: "message")
         
