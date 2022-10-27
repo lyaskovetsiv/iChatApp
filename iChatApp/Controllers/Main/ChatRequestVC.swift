@@ -18,7 +18,6 @@ class ChatRequestVC: UIViewController {
     private let denyButton = UIButton(title: "DENY", titleColor: .systemRed, backgroundColor: .white, cornerRadius: 10, shadows: false)
     private var stackView: UIStackView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -115,7 +114,6 @@ extension ChatRequestVC{
 
 //MARK: --Canvas
 import SwiftUI
-
 struct ChatRequestVCProvider: PreviewProvider{
     
     static var previews: some View {

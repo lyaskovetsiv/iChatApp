@@ -15,16 +15,7 @@ class PeopleVC: UIViewController {
     
     private var collectionView: UICollectionView!
     private var dataSource: PeopleDataSource!
-    
-    private var users = [MUser(id: UUID(), userName: "John", userImage: nil),
-                         MUser(id: UUID(), userName: "Peter", userImage: nil),
-                         MUser(id: UUID(), userName: "Rebecca", userImage: nil),
-                         MUser(id: UUID(), userName: "James", userImage: nil),
-                         MUser(id: UUID(), userName: "Jessica", userImage: nil),
-                         MUser(id: UUID(), userName: "Ivan", userImage: nil),
-                         MUser(id: UUID(), userName: "Bonya", userImage: nil),
-                         MUser(id: UUID(), userName: "Abraham", userImage: nil),
-                         MUser(id: UUID(), userName: "Nelly", userImage: nil)]
+    private var users = [MUser]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +82,7 @@ extension PeopleVC{
 }
 
 
+//MARK: --UISearchBarDelegate
 extension PeopleVC: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         updateDataSorce(with: searchText)
@@ -169,7 +161,6 @@ extension PeopleVC{
 
 //MARK: --Canvas
 import SwiftUI
-
 struct PeopleVCProvider: PreviewProvider{
     
     static var previews: some View {

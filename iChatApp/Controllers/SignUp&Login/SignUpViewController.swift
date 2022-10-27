@@ -8,11 +8,8 @@
 import UIKit
 import SnapKit
 
-
-
 class SignUpViewController: UIViewController {
 
-    //MARK: --Properties
     private let welcomeLabel = UILabel(text: "Good to see you!", font: .avenit26())
     private let emailLabel = UILabel(text: "Email")
     private let emailTextField = UITextField(placeholderText: "Enter your email")
@@ -27,15 +24,11 @@ class SignUpViewController: UIViewController {
     private var footStackView: UIStackView!
     weak var delegate: AuthNavigationDelegate?
     
-    
-    //MARK: --LifeCycleOfViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
     
-    
-    //MARK: --Functions
     private func setupView(){
         
         view.backgroundColor = .systemBackground
@@ -58,13 +51,12 @@ class SignUpViewController: UIViewController {
     }
     
     @objc private func signUpBtnTapped(){
-        let vc = SetupProfileViewController()
-        //self.present(vc, animated: true, completion: nil)
+        
         AuthService.shared.createUser(email: emailTextField.text, password: passwordTextField.text, confirmPassword: repassTextField.text) { result in
             switch result{
                 case .success(let user):
-                self.showAlert(title: "Sucess", message: "You've been successfully registred!") {
-                    self.present(SetupProfileViewController(), animated: true, completion: nil)
+                self.showAlert(title: "Success", message: "You've been successfully signed up!") {
+                    self.present(SetupProfileViewController(with: user), animated: true, completion: nil)
                 }
                 case .failure(let error):
                     self.showAlert(title: "Error", message: error.localizedDescription)

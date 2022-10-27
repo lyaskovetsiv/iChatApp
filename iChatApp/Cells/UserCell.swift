@@ -49,7 +49,7 @@ class UserCell: UICollectionViewCell, ConfiguringCell {
     
     func configure<U>(with value: U) where U : Hashable {
         guard let user = value as? MUser else {fatalError("Unknown kind of data")}
-        imageView.image = user.userImage
+        //imageView.image = user.userImage
         nameLabel.text = user.userName
     }
 }

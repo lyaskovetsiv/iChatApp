@@ -10,7 +10,6 @@ import SnapKit
 
 class AuthViewController: UIViewController {
     
-    //MARK: --Properties
     private let logoImageView = UIImageView(with: UIImage(named: "logo"), contentMode: .scaleAspectFit)
     private let googleLabel = UILabel(text: "Get started with ")
     private let emailLabel = UILabel(text: "Or sign with ")
@@ -18,25 +17,18 @@ class AuthViewController: UIViewController {
     private let googleButton = UIButton(title: "Google", titleColor: .black, backgroundColor: .white, shadows: true)
     private let emailButton = UIButton(title: "Email", titleColor: .black, backgroundColor: .white, shadows: true)
     private let loginButton = UIButton(title: "Login", titleColor: .white, backgroundColor: .black, shadows: false)
-    
     private let loginVC = LoginViewController()
     private let signUpVC = SignUpViewController()
     private var stackView: UIStackView!
     
-    
-    //MARK: --LifeCycleOfViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         view.backgroundColor = .white
         setupView()
-        
         loginVC.delegate = self
         signUpVC.delegate = self
     }
     
-    
-    //MARK: --Functions
     private func setupView(){
         
         view.backgroundColor = .systemBackground
@@ -112,7 +104,6 @@ extension AuthViewController{
 
 //MARK: CANVAS mode
 import SwiftUI
-
 struct AuthViewControllerProvider: PreviewProvider{
     
     static var previews: some View{

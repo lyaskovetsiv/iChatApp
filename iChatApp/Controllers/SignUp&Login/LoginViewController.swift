@@ -8,10 +8,8 @@
 import UIKit
 import SnapKit
 
-
 class LoginViewController: UIViewController {
 
-    //MARK: --Properties
     private let welcomeLabel = UILabel(text: "Welcome back!", font: .avenit26())
     private let orLabel = UILabel(text: "or")
     private let googleLabel = UILabel(text: "Login with")
@@ -27,15 +25,11 @@ class LoginViewController: UIViewController {
     private var bottomStackView: UIStackView!
     weak var delegate: AuthNavigationDelegate?
     
-    
-    //MARK: --LifeCycleOfViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
     
-    
-    //MARK: --Functions
     private func setupView(){
         
         view.backgroundColor = .systemBackground
@@ -68,6 +62,7 @@ class LoginViewController: UIViewController {
                 case .success(let user):
                     self.showAlert(title: "Success", message: "You have been successfully logIn")
                     //Добавить проверку на наличие данных в firebase, если они есть то перейти на MainVC, если нет, то перейти на SetupProfileViewController
+                print(user)
                 case .failure(let error):
                     self.showAlert(title: "Error", message: error.localizedDescription)
                     print(error)
@@ -80,9 +75,6 @@ class LoginViewController: UIViewController {
             self.delegate?.toSignUpVC()
         }
     }
-    
-    
-    
 }
 
 //MARK: --Constraits
@@ -109,8 +101,6 @@ extension LoginViewController{
             make.height.equalTo(60)
         }
         
-        
-        
         bottomStackView.translatesAutoresizingMaskIntoConstraints = false
         bottomStackView.snp.makeConstraints { make in
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(40)
@@ -122,7 +112,6 @@ extension LoginViewController{
 
 //MARK: CANVAS mode
 import SwiftUI
-
 struct LoginViewControllerProvider: PreviewProvider{
     
     static var previews: some View{

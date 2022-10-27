@@ -105,10 +105,8 @@ extension ProfileVC{
 }
 
 
-
 //MARK: --Canvas
 import SwiftUI
-
 struct ProfileVCProvider: PreviewProvider{
     
     static var previews: some View {

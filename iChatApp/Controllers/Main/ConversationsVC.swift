@@ -175,7 +175,6 @@ extension ConversationsVC{
 
 //MARK: --Canvas
 import SwiftUI
-
 struct ConversationsVCProvider: PreviewProvider{
     
     static var previews: some View {

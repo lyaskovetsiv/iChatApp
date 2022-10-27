@@ -7,10 +7,10 @@
 
 import UIKit
 import SnapKit
+import FirebaseAuth
 
 class SetupProfileViewController: UIViewController {
     
-    //MARK: --Properties
     private let welcomeLabel = UILabel(text: "Set up profile", font: .avenit26())
     private let photoUserView = AddPhotoView()
     private let fullNameLabel = UILabel(text: "Full name")
@@ -21,15 +21,22 @@ class SetupProfileViewController: UIViewController {
     private let sexControll = UISegmentedControl(first: "Male", second: "Female")
     private let goChattingButton = UIButton(title: "Go to charts!", titleColor: .white, backgroundColor: .black)
     private var mainStackView: UIStackView!
+    private let currentUser: User!
     
+    init(with currentUser: User){
+        self.currentUser = currentUser
+        super.init(nibName: nil, bundle: nil)
+    }
     
-    //MARK: --LifeCycleOfViewController
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
     
-    //MARK: --Functions
     private func setupView(){
         view.backgroundColor = .systemBackground
         
@@ -48,7 +55,21 @@ class SetupProfileViewController: UIViewController {
     }
     
     @objc private func goChattingBtnTapped(){
-        
+        FirestoreService.shared.saveProfile(with: currentUser.uid,
+                                            username: fullNameTextField.text,
+                                            email: currentUser.email,
+                                            sex: sexControll.titleForSegment(at: sexControll.selectedSegmentIndex),
+                                            avatarStringURL: nil,
+                                            description: aboutTextField.text) { result in
+            switch result{
+            case .success(_):
+                self.showAlert(title: "Success", message: "Good chatting!") {
+                //Переход в личный кабинет
+                }
+            case .failure(let error):
+                self.showAlert(title: "Error", message: error.localizedDescription)
+            }
+        }
     }
 }
 
@@ -80,30 +101,6 @@ extension SetupProfileViewController{
         goChattingButton.translatesAutoresizingMaskIntoConstraints = false
         goChattingButton.snp.makeConstraints { make in
             make.height.equalTo(60)
-        }
-    }
-}
-
-
-//MARK: CANVAS mode
-import SwiftUI
-
-struct RegisterViewControllerProvider: PreviewProvider{
-    
-    static var previews: some View{
-        ContainerView().edgesIgnoringSafeArea(.all)
-    }
-    
-    struct ContainerView: UIViewControllerRepresentable{
-       
-        let viewController = SetupProfileViewController()
-        
-        func makeUIViewController(context: Context) -> SetupProfileViewController {
-            return viewController
-        }
-        
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-            
         }
     }
 }
