@@ -10,6 +10,8 @@ target 'iChatApp' do
 pod 'SnapKit'
 pod 'FirebaseAuth'
 pod 'FirebaseFirestore'
+pod 'FirebaseCore'
+pod 'GoogleSignIn'
 
 
 end

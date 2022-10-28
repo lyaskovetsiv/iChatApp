@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import GoogleSignIn
+import FirebaseAuth
 
 class AuthViewController: UIViewController {
     
@@ -34,7 +36,7 @@ class AuthViewController: UIViewController {
         
         view.backgroundColor = .systemBackground
         
-        googleButton.customizeGoogleImage()
+        //googleButton.customizeGoogleImage()
         emailButton.addTarget(self, action: #selector(emailBtnTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginBtnTapped), for: .touchUpInside)
         googleButton.addTarget(self, action: #selector(googleBtnTapped), for: .touchUpInside)
@@ -124,5 +126,7 @@ struct AuthViewControllerProvider: PreviewProvider{
         }
     }
 }
+
+
 
 
