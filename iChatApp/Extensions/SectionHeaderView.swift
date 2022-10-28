@@ -27,7 +27,6 @@ class SectionHeaderView: UICollectionReusableView{
             make.left.equalTo(self.snp.left)
             make.right.equalTo(self.snp.right)
         }
-        
     }
     
     required init?(coder: NSCoder) {

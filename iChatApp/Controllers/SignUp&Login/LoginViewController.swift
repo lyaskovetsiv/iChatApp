@@ -23,6 +23,7 @@ class LoginViewController: UIViewController {
     private let signUpButton = UIButton(title: "Sign Up", titleColor: .red, backgroundColor: .systemBackground)
     private var mainStackView: UIStackView!
     private var bottomStackView: UIStackView!
+    
     weak var delegate: AuthNavigationDelegate?
     
     override func viewDidLoad() {

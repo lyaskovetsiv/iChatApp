@@ -29,7 +29,6 @@ class AddPhotoView: UIView {
         return button
     }()
 
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(photoView)
@@ -37,14 +36,13 @@ class AddPhotoView: UIView {
         setupConstraits()
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         photoView.layer.cornerRadius = photoView.bounds.width / 2
-    }
-    
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     private func setupConstraits(){

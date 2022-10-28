@@ -50,9 +50,6 @@ class Validation{
         return true
     }
     
-    
-    //with id: String, username: String?, sex: String?, avatarStringURL: String?, description: String?
-    
     static func isSamePasswords(password: String, rePassword: String)->Bool{
         guard password == rePassword else {
             return false

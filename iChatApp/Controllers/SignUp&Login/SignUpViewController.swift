@@ -22,6 +22,7 @@ class SignUpViewController: UIViewController {
     private let onBoardLabel = UILabel(text: "Already onboard?")
     private let loginButton = UIButton(title: "Login", titleColor: .red, backgroundColor: .systemBackground, shadows: false)
     private var footStackView: UIStackView!
+    
     weak var delegate: AuthNavigationDelegate?
     
     override func viewDidLoad() {

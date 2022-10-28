@@ -17,9 +17,10 @@ class AuthViewController: UIViewController {
     private let googleButton = UIButton(title: "Google", titleColor: .black, backgroundColor: .white, shadows: true)
     private let emailButton = UIButton(title: "Email", titleColor: .black, backgroundColor: .white, shadows: true)
     private let loginButton = UIButton(title: "Login", titleColor: .white, backgroundColor: .black, shadows: false)
+    private var stackView: UIStackView!
+    
     private let loginVC = LoginViewController()
     private let signUpVC = SignUpViewController()
-    private var stackView: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

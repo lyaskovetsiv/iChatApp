@@ -21,6 +21,7 @@ class SetupProfileViewController: UIViewController {
     private let sexControll = UISegmentedControl(first: "Male", second: "Female")
     private let goChattingButton = UIButton(title: "Go to charts!", titleColor: .white, backgroundColor: .black)
     private var mainStackView: UIStackView!
+    
     private let currentUser: User!
     
     init(with currentUser: User){
@@ -62,14 +63,14 @@ class SetupProfileViewController: UIViewController {
                                             avatarStringURL: nil,
                                             description: aboutTextField.text) { result in
             switch result{
-            case .success(let mUser):
-                self.showAlert(title: "Success", message: "Good chatting!") {
-                    let mainVC = MainVC(with: mUser)
-                    mainVC.modalPresentationStyle = .fullScreen
-                    self.present(mainVC, animated: true, completion: nil)
-                }
-            case .failure(let error):
-                self.showAlert(title: "Error", message: error.localizedDescription)
+                case .success(let mUser):
+                    self.showAlert(title: "Success", message: "Good chatting!") {
+                        let mainVC = MainVC(with: mUser)
+                        mainVC.modalPresentationStyle = .fullScreen
+                        self.present(mainVC, animated: true, completion: nil)
+                    }
+                case .failure(let error):
+                    self.showAlert(title: "Error", message: error.localizedDescription)
             }
         }
     }
