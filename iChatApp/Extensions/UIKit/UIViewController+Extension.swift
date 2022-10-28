@@ -25,5 +25,4 @@ extension UIViewController{
         alertVC.addAction(okAction)
         self.present(alertVC, animated: true, completion: nil)
     }
-
 }

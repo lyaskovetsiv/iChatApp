@@ -16,15 +16,15 @@ struct MUser: Hashable {
     var email: String
     var sex: String
     var description: String
-    var userImage: String
+    var userImageUrl: String
     
-    init(id: String, username: String, email: String, sex: String, description: String, avatarStringUrl: String){
+    init(id: String, username: String, email: String, sex: String, description: String, userImageUrl: String){
         self.id = id
         self.userName = username
         self.email = email
         self.sex = sex
         self.description = description
-        self.userImage = avatarStringUrl
+        self.userImageUrl = userImageUrl
     }
     
     init?(document: DocumentSnapshot){
@@ -34,14 +34,14 @@ struct MUser: Hashable {
         guard let email = data["email"] as? String else {return nil}
         guard let sex = data["sex"] as? String else {return nil}
         guard let description = data["description"] as? String else {return nil}
-        guard let avatarStringUrl = data["avatarStringURL"] as? String else {return nil}
+        guard let userImageUrl = data["userImageUrl"] as? String else {return nil}
         
         self.id = id
         self.userName = username
         self.email = email
         self.sex = sex
         self.description = description
-        self.userImage = avatarStringUrl
+        self.userImageUrl = userImageUrl
     }
     
     func hash(into hasher: inout Hasher){

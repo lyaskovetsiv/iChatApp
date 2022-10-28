@@ -12,18 +12,16 @@ class AddPhotoView: UIView {
     
     lazy var photoView: UIImageView = {
         let imageView = UIImageView()
-        let image = UIImage(named: "profile")
+        let image = UIImage(named: "defaultUser")
         imageView.image = image
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
-        imageView.layer.borderColor = UIColor.black.cgColor
-        imageView.layer.borderWidth = 2
         return imageView
     }()
     
     lazy var addButton: UIButton = {
         let button = UIButton(type: .system)
-        let plusImage = UIImage(named: "plus")
+        let plusImage = UIImage(named: "addBtn")
         button.setImage(plusImage, for: .normal)
         button.tintColor = .black
         return button
@@ -38,11 +36,6 @@ class AddPhotoView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        photoView.layer.cornerRadius = photoView.bounds.width / 2
     }
     
     private func setupConstraits(){

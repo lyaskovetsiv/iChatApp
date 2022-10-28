@@ -11,6 +11,7 @@ pod 'SnapKit'
 pod 'FirebaseAuth'
 pod 'FirebaseFirestore'
 pod 'FirebaseCore'
+pod 'Firebase/Storage'
 pod 'GoogleSignIn'
 
 

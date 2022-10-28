@@ -7,7 +7,7 @@
 
 import UIKit
 import FirebaseCore
-import GoogleSignIn
+import FirebaseStorage
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         return true
     }
-    
     
     // MARK: UISceneSession Lifecycle
 

@@ -31,14 +31,14 @@ extension UIButton{
             self.layer.shadowOpacity = 0.8 //
             self.layer.shadowOffset = CGSize(width: 2.5, height: 2.5)
         }
-        
     }
     
     func customizeGoogleImage(){
-        let image = UIImageView(with: UIImage(named: "google"), contentMode: .scaleAspectFit)
-        self.addSubview(image)
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.snp.makeConstraints { make in
+        let image = UIImage(named: "google")!
+        let imageView = UIImageView(with: image, contentMode: .scaleAspectFit)
+        self.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.snp.makeConstraints { make in
             make.centerY.equalTo(self.snp.centerY)
             make.left.equalTo(self.snp.left).inset(40)
         }

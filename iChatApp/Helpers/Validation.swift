@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Validation{
     
@@ -18,6 +19,12 @@ class Validation{
                   rePassword != "" else {
             return false
         }
+        return true
+    }
+    
+    static func isImageExists(image: UIImage?)->Bool{
+        guard let image = image,
+              image != UIImage(named: "defaultUser") else {return false}
         return true
     }
     

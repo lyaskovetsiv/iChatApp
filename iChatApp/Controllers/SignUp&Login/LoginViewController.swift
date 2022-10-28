@@ -34,11 +34,13 @@ class LoginViewController: UIViewController {
     private func setupView(){
         
         view.backgroundColor = .systemBackground
-        
-        googleButton.customizeGoogleImage()
+    
         loginButton.addTarget(self, action: #selector(loginBtnTapped), for: .touchUpInside)
-        googleButton.addTarget(self, action: #selector(googleBtnTapped), for: .touchUpInside)
         signUpButton.addTarget(self, action: #selector(signUpBtnTapped), for: .touchUpInside)
+        
+        googleButton.isEnabled = false
+        googleButton.customizeGoogleImage()
+        //googleButton.addTarget(self, action: #selector(googleBtnTapped), for: .touchUpInside)
         
         let googleView = ButtonFormView(label: googleLabel, button: googleButton)
         let emailView = TextFieldFormView(label: emailLabel, textField: emailTextField)
@@ -53,9 +55,9 @@ class LoginViewController: UIViewController {
         setupConstraits()
     }
     
-    @objc private func googleBtnTapped(){
-        
-    }
+//    @objc private func googleBtnTapped(){
+//        
+//    }
     
     @objc private func loginBtnTapped(){
         AuthService.shared.loginIn(email: emailTextField.text, password: passwordTextField.text) { result in

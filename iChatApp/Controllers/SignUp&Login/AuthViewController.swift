@@ -36,10 +36,12 @@ class AuthViewController: UIViewController {
         
         view.backgroundColor = .systemBackground
         
-        //googleButton.customizeGoogleImage()
         emailButton.addTarget(self, action: #selector(emailBtnTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginBtnTapped), for: .touchUpInside)
-        googleButton.addTarget(self, action: #selector(googleBtnTapped), for: .touchUpInside)
+        
+        googleButton.isEnabled = false
+        googleButton.customizeGoogleImage()
+        //googleButton.addTarget(self, action: #selector(googleBtnTapped), for: .touchUpInside)
         
         let googleView = ButtonFormView(label: googleLabel, button: googleButton)
         let emailView = ButtonFormView(label: emailLabel, button: emailButton)
@@ -60,10 +62,9 @@ class AuthViewController: UIViewController {
         self.present(loginVC, animated: true, completion: nil)
     }
     
-    @objc private func googleBtnTapped(){
-        
-    }
-    
+//    @objc private func googleBtnTapped(){
+//
+//    }
 }
 
 

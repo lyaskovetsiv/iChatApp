@@ -12,16 +12,17 @@ import FirebaseAuth
 class SetupProfileViewController: UIViewController {
     
     private let welcomeLabel = UILabel(text: "Set up profile", font: .avenit26())
-    private let photoUserView = AddPhotoView()
     private let fullNameLabel = UILabel(text: "Full name")
-    private let fullNameTextField = UITextField(placeholderText: "Enter your full name")
     private let aboutLabel = UILabel(text: "About me")
-    private let aboutTextField = UITextField(placeholderText: "Enter addition info about yourself")
     private let sexLabel  = UILabel(text: "Sex")
+    
+    private let photoUserView = AddPhotoView()
+    private let fullNameTextField = UITextField(placeholderText: "Enter your full name")
+    private let aboutTextField = UITextField(placeholderText: "Enter addition info about yourself")
     private let sexControll = UISegmentedControl(first: "Male", second: "Female")
+    
     private let goChattingButton = UIButton(title: "Go to charts!", titleColor: .white, backgroundColor: .black)
     private var mainStackView: UIStackView!
-    
     private let currentUser: User!
     
     init(with currentUser: User){
@@ -42,6 +43,7 @@ class SetupProfileViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         goChattingButton.addTarget(self, action: #selector(goChattingBtnTapped), for: .touchUpInside)
+        photoUserView.addButton.addTarget(self, action: #selector(addPhotoBtnTapped), for: .touchUpInside)
         
         let fullNameView = TextFieldFormView(label: fullNameLabel, textField: fullNameTextField)
         let aboutView = TextFieldFormView(label: aboutLabel, textField: aboutTextField)
@@ -55,12 +57,19 @@ class SetupProfileViewController: UIViewController {
         setupConstraits()
     }
     
+    @objc private func addPhotoBtnTapped(){
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
     @objc private func goChattingBtnTapped(){
         FirestoreService.shared.saveProfile(with: currentUser.uid,
                                             username: fullNameTextField.text,
                                             email: currentUser.email,
                                             sex: sexControll.titleForSegment(at: sexControll.selectedSegmentIndex),
-                                            avatarStringURL: nil,
+                                            userImage: photoUserView.photoView.image,
                                             description: aboutTextField.text) { result in
             switch result{
                 case .success(let mUser):
@@ -73,6 +82,17 @@ class SetupProfileViewController: UIViewController {
                     self.showAlert(title: "Error", message: error.localizedDescription)
             }
         }
+    }
+}
+
+
+//MARK: --UIImagePickerControllerDelegate & UINavigationControllerDelegate
+extension SetupProfileViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate{
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {return}
+        photoUserView.photoView.image = image
     }
 }
 
