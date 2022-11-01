@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import FirebaseAuth
+import FirebaseFirestore
 
 fileprivate typealias ChatDataSource = UICollectionViewDiffableDataSource<ConversationsVC.Section, MChat>
 fileprivate typealias ChatSnapShot = NSDiffableDataSourceSnapshot<ConversationsVC.Section, MChat>
@@ -16,20 +17,12 @@ class ConversationsVC: UIViewController {
     
     private var collectionView: UICollectionView!
     private var dataSource: ChatDataSource!
+    private var waitingChatsListener: ListenerRegistration?
+    private var activeChatsListener: ListenerRegistration?
+    private var activeChats = [MChat]()
+    private var waitingChats = [MChat]()
     private let currentUser: MUser!
-    
-    private let activeChats = [MChat(userName: "Aleksey", userImage: UIImage(named: "man"), lastMessage: "How are you?"),
-                               MChat(userName: "Nina", userImage: UIImage(named: "girl"),  lastMessage: "So funny)"),
-                               MChat(userName: "John", userImage: UIImage(named: "man"),  lastMessage: "Let's go!"),
-                               MChat(userName: "Rebecca", userImage: UIImage(named: "girl"),  lastMessage: "Are you hungry?")
-    ]
-    
-    private let waitingChats = [MChat(userName: "Aleksey", userImage: UIImage(named: "man"),  lastMessage: "How are you?"),
-                               MChat(userName: "Nina", userImage: UIImage(named: "girl"),  lastMessage: "So funny)"),
-                               MChat(userName: "John", userImage: UIImage(named: "man"),  lastMessage: "Let's go!"),
-                               MChat(userName: "Rebecca", userImage: UIImage(named: "girl"),  lastMessage: "Are you hungry?")
-    ]
-    
+
     init(with currentUser: MUser){
         self.currentUser = currentUser
         super.init(nibName: nil, bundle: nil)
@@ -39,11 +32,16 @@ class ConversationsVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit{
+        waitingChatsListener?.remove()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         createDataSource()
         updateDataSource()
+        setupListeners()
     }
     
     private func setupView(){
@@ -54,18 +52,46 @@ class ConversationsVC: UIViewController {
         setupConstraits()
     }
     
+    private func setupListeners(){
+        waitingChatsListener = ListenerService.shared.chatsObserve(chats: waitingChats, kindofChat: "waitingChats", completionBlock: { result in
+            switch result{
+            case .success(let mChats):
+                //FIXME: Не всплывает, если один чат!
+                if !self.waitingChats.isEmpty, self.waitingChats.count <= mChats.count {
+                    let chatRequestVC = ChatRequestVC(chat: mChats.last!)
+                    self.present(chatRequestVC, animated: true, completion: nil)
+                }
+                self.waitingChats = mChats
+                self.updateDataSource()
+            case .failure(let error):
+                self.showAlert(title: "Error", message: error.localizedDescription)
+            }
+        })
+        
+        activeChatsListener = ListenerService.shared.chatsObserve(chats: activeChats, kindofChat: "activeChats", completionBlock: { result in
+            switch result{
+                case .success(let chats):
+                    self.activeChats = chats
+                    self.updateDataSource()
+                case .failure(let error):
+                    self.showAlert(title: "Error", message: error.localizedDescription)
+            }
+        })
+    }
+    
     private func setupCollectionView(){
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collectionView.register(ActiveChatCell.self, forCellWithReuseIdentifier: ActiveChatCell.reuseIdentifier)
         collectionView.register(WaitingChatCell.self, forCellWithReuseIdentifier: WaitingChatCell.reuseIdentifier)
         collectionView.register(SectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeaderView.reuseIdentifier)
+        collectionView.delegate = self
         view.addSubview(collectionView)
     }
     
     @objc private func logOutTapped(){
         let vc = UIAlertController(title: "Quit?", message: "Do you really want to sign out?", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "No", style: .default, handler: nil)
-        let okAction = UIAlertAction(title: "Yes", style: .destructive) { _ in
+        let cancelAction = UIAlertAction(title: "No", style: .destructive, handler: nil)
+        let okAction = UIAlertAction(title: "Yes", style: .default) { _ in
             do{
                 try Auth.auth().signOut()
                 self.view.window?.rootViewController = AuthViewController()
@@ -75,13 +101,58 @@ class ConversationsVC: UIViewController {
                 print("Can't sign out: \(error.localizedDescription)")
             }
         }
-        
-        vc.addAction(cancelAction)
         vc.addAction(okAction)
+        vc.addAction(cancelAction)
         self.present(vc, animated: true, completion: nil)
     }
     
 }
+
+
+//MARK: --UICollectionViewDelegate
+extension ConversationsVC: UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let chat = self.dataSource.itemIdentifier(for: indexPath) else {return}
+        guard let section = ConversationsVC.Section(rawValue: indexPath.section) else {return}
+        
+        switch section{
+            case .waitingChats:
+                let vc = ChatRequestVC(chat: chat)
+                vc.delegate = self
+                self.present(vc, animated: true, completion: nil)
+            case .activeChats:
+                print("")
+        }
+    }
+}
+
+
+//MARK: --ConvNavigationDelegate
+extension ConversationsVC: ConvNavigationDelegate{
+    
+    func removeWaitingChat(chat: MChat) {
+        FirestoreService.shared.deleteWaitingChat(chat: chat) { result in
+            switch result{
+                case .success():
+                    self.showAlert(title: "Success", message: "Chat with \(chat.friendUserName) was deleted")
+                case .failure(let error):
+                    self.showAlert(title: "Error", message: error.localizedDescription)
+            }
+        }
+    }
+    
+    func changeToActive(chat: MChat) {
+        FirestoreService.shared.changeChatToActive(chat: chat) { result in
+            switch result{
+            case .success():
+                self.showAlert(title: "Success", message: "Good chatting with \(chat.friendUserName)!")
+            case .failure(let error):
+                self.showAlert(title: "Error", message: error.localizedDescription)
+            }
+        }
+    }
+}
+
 
 //MARK: --DataSource
 extension ConversationsVC{
@@ -99,7 +170,6 @@ extension ConversationsVC{
         
         dataSource.supplementaryViewProvider = {
             collectionView, elementKind, indexPath in
-        
             guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: elementKind, withReuseIdentifier: SectionHeaderView.reuseIdentifier, for: indexPath) as? SectionHeaderView else {fatalError("Can't create new section header")}
             guard let section = ConversationsVC.Section(rawValue: indexPath.section) else {fatalError("Unknown section")}
             sectionHeader.configure(with: section.description(), font: .laoSangamMN20()!, textColor: .systemGray)
@@ -181,7 +251,7 @@ extension ConversationsVC{
 }
 
 
-//MARK: --Enums
+//MARK: --SectionLogic
 extension ConversationsVC{
     
     fileprivate enum Section: Int{
@@ -198,29 +268,4 @@ extension ConversationsVC{
         }
     }
 }
-
-
-//MARK: --Canvas
-//import SwiftUI
-//struct ConversationsVCProvider: PreviewProvider{
-//
-//    static var previews: some View {
-//        ContainerView()
-//    }
-//
-//    struct ContainerView: UIViewControllerRepresentable{
-//
-//        let viewController = ConversationsVC()
-//
-//        func makeUIViewController(context: Context) -> ConversationsVC {
-//            return viewController
-//        }
-//
-//        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-//
-//        }
-//    }
-//}
-
-
 

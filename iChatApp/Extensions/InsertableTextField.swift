@@ -29,7 +29,7 @@ class InsertableTextField: UITextField{
         leftViewMode = .always
         
         let button = UIButton(type: .system)
-        let buttonImage = UIImage(named: "send")
+        let buttonImage = UIImage(named: "sendMessage")
         button.setImage(buttonImage, for: .normal)
         rightView = button
         rightViewMode = .always
@@ -67,23 +67,23 @@ class InsertableTextField: UITextField{
 
 
 //MARK: --Canvas
-import SwiftUI
-struct InsertableTextFieldProvider: PreviewProvider{
-    
-    static var previews: some View {
-        ContainerView()
-    }
-    
-    struct ContainerView: UIViewControllerRepresentable{
-        
-        let viewController = ProfileVC()
-        
-        func makeUIViewController(context: Context) -> ProfileVC {
-            return viewController
-        }
-        
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-            
-        }
-    }
-}
+//import SwiftUI
+//struct InsertableTextFieldProvider: PreviewProvider{
+//    
+//    static var previews: some View {
+//        ContainerView()
+//    }
+//    
+//    struct ContainerView: UIViewControllerRepresentable{
+//        
+//        let viewController = ProfileVC()
+//        
+//        func makeUIViewController(context: Context) -> ProfileVC {
+//            return viewController
+//        }
+//        
+//        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+//            
+//        }
+//    }
+//}

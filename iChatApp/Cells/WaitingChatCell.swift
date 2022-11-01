@@ -7,17 +7,19 @@
 
 import UIKit
 import SnapKit
+import SDWebImage
 
 class WaitingChatCell: UICollectionViewCell, ConfiguringCell {
     
     static let reuseIdentifier = "waitingChatCell"
     
-    private var imageView = UIImageView()
+    private var userImageView = UIImageView()
     
     override init(frame: CGRect) {
+        
         super.init(frame: frame)
         setupCell()
-        addSubview(imageView)
+        addSubview(userImageView)
         setupConstraits()
     }
     
@@ -25,16 +27,21 @@ class WaitingChatCell: UICollectionViewCell, ConfiguringCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        userImageView.image = nil
+    }
+    
     private func setupCell(){
+        
         backgroundColor = .systemMint
         self.layer.cornerRadius = 5
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
+        userImageView.contentMode = .scaleAspectFill
+        userImageView.clipsToBounds = true
     }
     
     func configure<U>(with value: U) where U : Hashable {
         guard let chat = value as? MChat else {fatalError("Unknown kind of data")}
-        imageView.image = chat.userImage
+        userImageView.sd_setImage(with: URL(string: chat.friendUserImageURL), completed: nil)
     }
     
 }
@@ -44,8 +51,9 @@ class WaitingChatCell: UICollectionViewCell, ConfiguringCell {
 extension WaitingChatCell{
     
     private func setupConstraits(){
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.snp.makeConstraints({ make in
+        
+        userImageView.translatesAutoresizingMaskIntoConstraints = false
+        userImageView.snp.makeConstraints({ make in
             make.top.equalTo(self.snp.top)
             make.bottom.equalTo(self.snp.bottom)
             make.left.equalTo(self.snp.left)

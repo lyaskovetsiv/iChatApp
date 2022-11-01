@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import FirebaseFirestore
 
 fileprivate typealias PeopleDataSource = UICollectionViewDiffableDataSource<PeopleVC.Section, MUser>
 fileprivate typealias PeopleSnapShot = NSDiffableDataSourceSnapshot<PeopleVC.Section, MUser>
@@ -17,6 +18,7 @@ class PeopleVC: UIViewController {
     private var dataSource: PeopleDataSource!
     private let currentUser: MUser!
     private var users = [MUser]()
+    private var usersListener: ListenerRegistration?
     
     init(with currentUser: MUser){
         self.currentUser = currentUser
@@ -27,11 +29,24 @@ class PeopleVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit{
+        usersListener?.remove()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         createDataSource()
-        updateDataSorce(with: nil)
+        usersListener = ListenerService.shared.usersObserve(users: users, completionBLock: { result in
+            switch result{
+                case .success(let users):
+                    self.users = users
+                    self.updateDataSorce(with: nil)
+                case .failure(let error):
+                    self.showAlert(title: "Error", message: error.localizedDescription)
+            }
+        })
+
     }
     
     private func setupView(){
@@ -52,6 +67,7 @@ class PeopleVC: UIViewController {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collectionView.register(UserCell.self, forCellWithReuseIdentifier: UserCell.reuseIdentifier)
         collectionView.register(SectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeaderView.reuseIdentifier)
+        collectionView.delegate = self
         view.addSubview(collectionView)
     }
 }
@@ -109,7 +125,7 @@ extension PeopleVC{
             guard let section = PeopleVC.Section(rawValue: sectionIndex) else {fatalError("Unknown section")}
             switch section{
                 case .main:
-                return self.createSection()
+                    return self.createSection()
             }
         }
         return layout
@@ -155,6 +171,16 @@ extension PeopleVC{
 }
 
 
+//MARK: --UICollectionViewDelegate
+extension PeopleVC: UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let user = self.dataSource.itemIdentifier(for: indexPath) else {return}
+        let profileVC = ProfileVC(user: user)
+        self.present(profileVC, animated: true, completion: nil)
+    }
+}
+
+
 //MARK: --Enums
 extension PeopleVC{
     fileprivate enum Section: Int{
@@ -168,26 +194,3 @@ extension PeopleVC{
         }
     }
 }
-
-
-//MARK: --Canvas
-//import SwiftUI
-//struct PeopleVCProvider: PreviewProvider{
-//    
-//    static var previews: some View {
-//        ContainerView()
-//    }
-//    
-//    struct ContainerView: UIViewControllerRepresentable{
-//        
-//        let viewController = PeopleVC()
-//        
-//        func makeUIViewController(context: Context) -> PeopleVC {
-//            return viewController
-//        }
-//        
-//        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-//            
-//        }
-//    }
-//}

@@ -7,15 +7,30 @@
 
 import UIKit
 import SnapKit
+import SDWebImage
 
 class ProfileVC: UIViewController {
     
     private let containerView = UIView()
     private let imageView = UIImageView()
-    private let nameLabel = UILabel(text: "Peter Ben", font: .systemFont(ofSize: 24, weight: .regular))
-    private let aboutMeLabel = UILabel(text: "You have an opportunity with the best in the world!", font: .systemFont(ofSize: 18, weight: .light))
+    private let nameLabel = UILabel(text: "", font: .systemFont(ofSize: 24, weight: .regular))
+    private let aboutMeLabel = UILabel(text: "", font: .systemFont(ofSize: 18, weight: .light))
     private let textField = InsertableTextField()
     private var stackView: UIStackView!
+    
+    private let user: MUser!
+    
+    init(user: MUser){
+        self.user = user
+        self.nameLabel.text = user.userName
+        self.aboutMeLabel.text = user.description
+        self.imageView.image = nil
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +42,7 @@ class ProfileVC: UIViewController {
         view.addSubview(containerView)
         setupContainerView()
         setupConstraits()
+        imageView.sd_setImage(with: URL(string: user.userImageUrl), completed: nil)
     }
     
     private func setupContainerView(){
@@ -100,29 +116,18 @@ extension ProfileVC{
     }
     
     @objc private func sendMessage(){
-        
-    }
-}
-
-
-//MARK: --Canvas
-import SwiftUI
-struct ProfileVCProvider: PreviewProvider{
-    
-    static var previews: some View {
-        ContainerView()
-    }
-    
-    struct ContainerView: UIViewControllerRepresentable{
-        
-        let viewController = ProfileVC()
-        
-        func makeUIViewController(context: Context) -> ProfileVC {
-            return viewController
-        }
-        
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        guard let message = textField.text, textField.text != "" else { return }
+        self.dismiss(animated: true) {
+            FirestoreService.shared.createWaitingChat(message: message, reciever: self.user) { result in
+                switch result{
+                    case .success():
+                    UIApplication.getTopViewController()?.showAlert(title: "Congratulations", message: "You message was send to selected person!")
+                case .failure(let error):
+                    UIApplication.getTopViewController()?.showAlert(title: "Error", message: "Unknown error. You can't send message to this person")
+                }
+            }
             
         }
     }
 }
+

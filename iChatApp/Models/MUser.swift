@@ -18,6 +18,16 @@ struct MUser: Hashable {
     var description: String
     var userImageUrl: String
     
+    var representation: [String : Any] {
+        var rep = ["id": self.id,
+                   "username": self.userName,
+                   "email": self.email,
+                   "sex": self.sex,
+                   "description": self.description,
+                   "userImageUrl": self.userImageUrl]
+        return rep
+    }
+    
     init(id: String, username: String, email: String, sex: String, description: String, userImageUrl: String){
         self.id = id
         self.userName = username
@@ -29,6 +39,23 @@ struct MUser: Hashable {
     
     init?(document: DocumentSnapshot){
         guard let data = document.data() else { return nil}
+        guard let id = data["id"] as? String else {return nil}
+        guard let username = data["username"] as? String else {return nil}
+        guard let email = data["email"] as? String else {return nil}
+        guard let sex = data["sex"] as? String else {return nil}
+        guard let description = data["description"] as? String else {return nil}
+        guard let userImageUrl = data["userImageUrl"] as? String else {return nil}
+        
+        self.id = id
+        self.userName = username
+        self.email = email
+        self.sex = sex
+        self.description = description
+        self.userImageUrl = userImageUrl
+    }
+    
+    init?(document: QueryDocumentSnapshot){
+        let data = document.data()
         guard let id = data["id"] as? String else {return nil}
         guard let username = data["username"] as? String else {return nil}
         guard let email = data["email"] as? String else {return nil}

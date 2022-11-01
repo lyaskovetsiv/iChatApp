@@ -41,7 +41,6 @@ class AuthViewController: UIViewController {
         
         googleButton.isEnabled = false
         googleButton.customizeGoogleImage()
-        //googleButton.addTarget(self, action: #selector(googleBtnTapped), for: .touchUpInside)
         
         let googleView = ButtonFormView(label: googleLabel, button: googleButton)
         let emailView = ButtonFormView(label: emailLabel, button: emailButton)
@@ -61,10 +60,6 @@ class AuthViewController: UIViewController {
     @objc private func loginBtnTapped(){
         self.present(loginVC, animated: true, completion: nil)
     }
-    
-//    @objc private func googleBtnTapped(){
-//
-//    }
 }
 
 
@@ -78,7 +73,6 @@ extension AuthViewController: AuthNavigationDelegate{
     func toSignUpVC() {
         present(signUpVC, animated: true, completion: nil)
     }
-
 }
 
 
@@ -104,30 +98,5 @@ extension AuthViewController{
     }
     
 }
-
-
-//MARK: CANVAS mode
-import SwiftUI
-struct AuthViewControllerProvider: PreviewProvider{
-    
-    static var previews: some View{
-        ContainerView().edgesIgnoringSafeArea(.all)
-    }
-    
-    struct ContainerView: UIViewControllerRepresentable{
-       
-        let viewController = AuthViewController()
-        
-        func makeUIViewController(context: Context) -> AuthViewController {
-            return viewController
-        }
-        
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-            
-        }
-    }
-}
-
-
 
 

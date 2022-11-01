@@ -71,9 +71,8 @@ class SignUpViewController: UIViewController {
             self.delegate?.toLoginVC()
         }
     }
-    
-    
 }
+
 
 //MARK: --Constraits
 extension SignUpViewController{
@@ -106,25 +105,3 @@ extension SignUpViewController{
 }
 
 
-//MARK: CANVAS mode
-import SwiftUI
-
-struct SignUpViewControllerProvider: PreviewProvider{
-    
-    static var previews: some View{
-        ContainerView().edgesIgnoringSafeArea(.all)
-    }
-    
-    struct ContainerView: UIViewControllerRepresentable{
-       
-        let viewController = SignUpViewController()
-        
-        func makeUIViewController(context: Context) -> SignUpViewController {
-            return viewController
-        }
-        
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-            
-        }
-    }
-}

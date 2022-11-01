@@ -18,6 +18,7 @@ class AuthService{
     
     private init(){}
     
+    
     func createUser(email: String?, password: String?, confirmPassword: String?, completionBlock: @escaping (Result<User, Error>)->Void){
         
         //Все ли поля заполнены?

@@ -7,13 +7,14 @@
 
 import UIKit
 import SnapKit
+import SDWebImage
 
 class UserCell: UICollectionViewCell, ConfiguringCell {
 
     static let reuseIdentifier = "userCell"
     
-    private let imageView = UIImageView()
-    private let nameLabel = UILabel()
+    private let userImageView = UIImageView()
+    private let userNameLabel = UILabel()
     private let containerView = UIView()
     
     override init(frame: CGRect) {
@@ -28,16 +29,6 @@ class UserCell: UICollectionViewCell, ConfiguringCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupContainerView(){
-        addSubview(imageView)
-        addSubview(nameLabel)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        imageView.layer.cornerRadius = 5
-    }
-    
     private func setupCell(){
         backgroundColor = .systemBackground
         self.layer.cornerRadius = 5
@@ -47,10 +38,25 @@ class UserCell: UICollectionViewCell, ConfiguringCell {
         self.layer.shadowOffset = CGSize(width: 2.5, height: 2.5)
     }
     
+    private func setupContainerView(){
+        addSubview(userImageView)
+        addSubview(userNameLabel)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        userImageView.layer.cornerRadius = 5
+    }
+    
+    override func prepareForReuse() {
+        userImageView.image = nil
+    }
+    
     func configure<U>(with value: U) where U : Hashable {
         guard let user = value as? MUser else {fatalError("Unknown kind of data")}
-        //imageView.image = user.userImage
-        nameLabel.text = user.userName
+        guard let url = URL(string: user.userImageUrl) else {fatalError("Unknown url")}
+        userImageView.sd_setImage(with: url, completed: nil)
+        userNameLabel.text = user.userName
     }
 }
 
@@ -70,21 +76,21 @@ extension UserCell{
             make.right.equalTo(self.snp.right)
         }
         
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.snp.makeConstraints { make in
+        userImageView.translatesAutoresizingMaskIntoConstraints = false
+        userImageView.contentMode = .scaleAspectFill
+        userImageView.clipsToBounds = true
+        userImageView.snp.makeConstraints { make in
             make.top.equalTo(containerView.snp.top)
             make.left.equalTo(containerView.snp.left)
             make.right.equalTo(containerView.snp.right)
             make.height.equalTo(containerView.snp.width)
         }
         
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.snp.makeConstraints { make in
+        userNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        userNameLabel.snp.makeConstraints { make in
             make.left.equalTo(containerView.snp.left).inset(10)
             make.right.equalTo(containerView.snp.right).inset(10)
-            make.top.equalTo(imageView.snp.bottom).inset(-10)
+            make.top.equalTo(userImageView.snp.bottom).inset(-10)
         }
     }
 }

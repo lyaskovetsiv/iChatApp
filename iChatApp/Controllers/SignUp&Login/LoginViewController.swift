@@ -40,7 +40,6 @@ class LoginViewController: UIViewController {
         
         googleButton.isEnabled = false
         googleButton.customizeGoogleImage()
-        //googleButton.addTarget(self, action: #selector(googleBtnTapped), for: .touchUpInside)
         
         let googleView = ButtonFormView(label: googleLabel, button: googleButton)
         let emailView = TextFieldFormView(label: emailLabel, textField: emailTextField)
@@ -55,31 +54,24 @@ class LoginViewController: UIViewController {
         setupConstraits()
     }
     
-//    @objc private func googleBtnTapped(){
-//        
-//    }
-    
     @objc private func loginBtnTapped(){
         AuthService.shared.loginIn(email: emailTextField.text, password: passwordTextField.text) { result in
             switch result{
                 case .success(let user):
-                    self.showAlert(title: "Success", message: "You have been successfully logIn")
                     FirestoreService.shared.getUser(user: user) { result in
                         switch result{
-                        case .success(let mUser):
-                            let mainVC = MainVC(with: mUser)
-                            mainVC.modalPresentationStyle = .fullScreen
-                            self.present(mainVC, animated: true, completion: nil)
-                        case .failure(_):
-                            //TODO: Может быть через презент?
-                            self.view.window?.rootViewController = SetupProfileViewController(with: user)
-                            self.view.window?.makeKeyAndVisible()
+                            case .success(let mUser):
+                                self.showAlert(title: "Success", message: "You have been successfully logIn") {
+                                let mainVC = MainVC(with: mUser)
+                                mainVC.modalPresentationStyle = .fullScreen
+                                self.present(mainVC, animated: true, completion: nil)
+                                }
+                            case .failure(_):
+                                self.present(SetupProfileViewController(with: user), animated: true, completion: nil)
                         }
                     }
-                
                 case .failure(let error):
                     self.showAlert(title: "Error", message: error.localizedDescription)
-                    print(error)
             }
         }
     }
@@ -122,29 +114,5 @@ extension LoginViewController{
         }
     }
 }
-
-
-//MARK: CANVAS mode
-import SwiftUI
-struct LoginViewControllerProvider: PreviewProvider{
-    
-    static var previews: some View{
-        ContainerView().edgesIgnoringSafeArea(.all)
-    }
-    
-    struct ContainerView: UIViewControllerRepresentable{
-       
-        let viewController = LoginViewController()
-        
-        func makeUIViewController(context: Context) ->LoginViewController {
-            return viewController
-        }
-        
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-            
-        }
-    }
-}
-
 
 
