@@ -38,11 +38,10 @@ struct MMessage: Hashable, MessageType {
                     "senderId": self.sender.senderId,
                     "senderName": self.sender.displayName,
                     "sendDate": self.sentDate ]
-        //!!!!!!
+        
         if let url = downloadURL?.absoluteString{
             rep["url"] = url
         }
-        //
         else{
             rep["content"] = self.senderContent
         }
