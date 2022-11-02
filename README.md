@@ -17,3 +17,8 @@
 **Login&SignUp Screens**:
 | <img width="242" alt="Снимок экрана 2022-10-25 в 18 53 02" src="https://user-images.githubusercontent.com/100786077/197822796-5a6d914e-3deb-42b8-8cec-1704e80aeeb1.png">  | <img width="241" alt="Снимок экрана 2022-10-25 в 18 53 21" src="https://user-images.githubusercontent.com/100786077/197822806-b768cdf8-2cd9-47ec-85ff-6022bded678e.png"> | <img width="234" alt="Снимок экрана 2022-10-25 в 18 53 32" src="https://user-images.githubusercontent.com/100786077/197822812-c5eb6cfd-8171-4830-ba8b-4b425305a598.png">  | <img width="242" alt="Снимок экрана 2022-10-25 в 18 53 43" src="https://user-images.githubusercontent.com/100786077/197822819-13731be8-c9de-4f3d-93ef-472b228b4b65.png">  |
 | ------------- | ------------- | ------------- | ------------- |
+
+**Main Screens**:
+|  <img width="374" alt="Снимок экрана 2022-11-02 в 20 09 04" src="https://user-images.githubusercontent.com/100786077/199555930-b2be79a1-d98f-4f36-b826-e6b89bb0b541.png"> | <img width="350" alt="Снимок экрана 2022-11-02 в 20 09 17" src="https://user-images.githubusercontent.com/100786077/199556005-cccd1979-d9c9-4894-9c1f-d72fc1ba06e8.png"> |eferf  | erfef  |
+| ------------- | ------------- | ------------- | ------------- |
+
