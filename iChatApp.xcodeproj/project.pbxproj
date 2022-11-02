@@ -15,6 +15,7 @@
 		043BF6342906A26100A7068C /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BF6332906A26100A7068C /* SectionHeaderView.swift */; };
 		043BF6362906B3B700A7068C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BF6352906B3B700A7068C /* UserCell.swift */; };
 		044145B928FEAE3C00891C94 /* CompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044145B828FEAE3C00891C94 /* CompositionalLayout.swift */; };
+		0454F6052912B15B000232DE /* ImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454F6042912B15B000232DE /* ImageItem.swift */; };
 		045F8C9D28F711570012316D /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045F8C9C28F711570012316D /* UITextField+Extensions.swift */; };
 		045F8CC028F729360012316D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045F8CBF28F729360012316D /* LoginViewController.swift */; };
 		0465B98E28F5D80D00E51CAF /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0465B98D28F5D80D00E51CAF /* UIStackView+Extension.swift */; };
@@ -54,6 +55,7 @@
 		04DD72CD28F4815300D01DD0 /* ButtonFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD72CC28F4815300D01DD0 /* ButtonFormView.swift */; };
 		04EE326B29094937002FD08A /* AuthErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE326A29094937002FD08A /* AuthErrors.swift */; };
 		04EE326E29095026002FD08A /* AuthNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE326D29095026002FD08A /* AuthNavigationDelegate.swift */; };
+		04FF543B29115552002E5D5F /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF543A29115552002E5D5F /* ChatVC.swift */; };
 		A94D899E366F25CDA2DF57FF /* Pods_iChatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D45A5C7B8ABE4FDAB4576DB6 /* Pods_iChatApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +68,7 @@
 		043BF6332906A26100A7068C /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		043BF6352906B3B700A7068C /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		044145B828FEAE3C00891C94 /* CompositionalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalLayout.swift; sourceTree = "<group>"; };
+		0454F6042912B15B000232DE /* ImageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageItem.swift; sourceTree = "<group>"; };
 		045F8C9C28F711570012316D /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		045F8CBF28F729360012316D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0465B98D28F5D80D00E51CAF /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
@@ -107,6 +110,7 @@
 		04DD72CC28F4815300D01DD0 /* ButtonFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFormView.swift; sourceTree = "<group>"; };
 		04EE326A29094937002FD08A /* AuthErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthErrors.swift; sourceTree = "<group>"; };
 		04EE326D29095026002FD08A /* AuthNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNavigationDelegate.swift; sourceTree = "<group>"; };
+		04FF543A29115552002E5D5F /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		D45A5C7B8ABE4FDAB4576DB6 /* Pods_iChatApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iChatApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D60E2C053CADE72A405AAB3B /* Pods-iChatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iChatApp.release.xcconfig"; path = "Target Support Files/Pods-iChatApp/Pods-iChatApp.release.xcconfig"; sourceTree = "<group>"; };
 		DDBCE242E2E9A8FEC10FB7FC /* Pods-iChatApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iChatApp.debug.xcconfig"; path = "Target Support Files/Pods-iChatApp/Pods-iChatApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -171,6 +175,7 @@
 				0468B28828F9B2F7002DB71E /* MainVC.swift */,
 				0468B28A28F9B31B002DB71E /* PeopleVC.swift */,
 				0468B28C28F9B34B002DB71E /* ConversationsVC.swift */,
+				04FF543A29115552002E5D5F /* ChatVC.swift */,
 				048A5BC9290FD0B400C844FB /* ProfileVC.swift */,
 				048A5BC8290FD0B400C844FB /* ChatRequestVC.swift */,
 			);
@@ -183,6 +188,7 @@
 				04C510DC290012A900C4DDF5 /* MChat.swift */,
 				04AE645C2900646C008E53BF /* MUser.swift */,
 				04DAABA4290EFC0C00900C94 /* MMessage.swift */,
+				0454F6042912B15B000232DE /* ImageItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -442,6 +448,7 @@
 				04DD72AF28F464C400D01DD0 /* AuthViewController.swift in Sources */,
 				0468B28928F9B2F7002DB71E /* MainVC.swift in Sources */,
 				046E4838290BE14700813D6F /* StorageService.swift in Sources */,
+				04FF543B29115552002E5D5F /* ChatVC.swift in Sources */,
 				04EE326B29094937002FD08A /* AuthErrors.swift in Sources */,
 				043BF6322906974B00A7068C /* InsertableTextField.swift in Sources */,
 				04DAABA7290F063700900C94 /* UIApplication + Extension.swift in Sources */,
@@ -452,6 +459,7 @@
 				04DD72CD28F4815300D01DD0 /* ButtonFormView.swift in Sources */,
 				0465B99228F5E05300E51CAF /* SignUpViewController.swift in Sources */,
 				0465B99428F5E20300E51CAF /* TextFieldFormView.swift in Sources */,
+				0454F6052912B15B000232DE /* ImageItem.swift in Sources */,
 				04DAABA5290EFC0C00900C94 /* MMessage.swift in Sources */,
 				043BF6342906A26100A7068C /* SectionHeaderView.swift in Sources */,
 				0468B28628F98457002DB71E /* UISegmentedControll.swift in Sources */,

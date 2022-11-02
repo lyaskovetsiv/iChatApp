@@ -37,6 +37,7 @@ class PeopleVC: UIViewController {
         super.viewDidLoad()
         setupView()
         createDataSource()
+        
         usersListener = ListenerService.shared.usersObserve(users: users, completionBLock: { result in
             switch result{
                 case .success(let users):
@@ -109,6 +110,16 @@ extension PeopleVC{
 }
 
 
+//MARK: --UICollectionViewDelegate
+extension PeopleVC: UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let user = self.dataSource.itemIdentifier(for: indexPath) else {return}
+        let profileVC = ProfileVC(user: user)
+        self.present(profileVC, animated: true, completion: nil)
+    }
+}
+
+
 //MARK: --UISearchBarDelegate
 extension PeopleVC: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -171,17 +182,7 @@ extension PeopleVC{
 }
 
 
-//MARK: --UICollectionViewDelegate
-extension PeopleVC: UICollectionViewDelegate{
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let user = self.dataSource.itemIdentifier(for: indexPath) else {return}
-        let profileVC = ProfileVC(user: user)
-        self.present(profileVC, animated: true, completion: nil)
-    }
-}
-
-
-//MARK: --Enums
+//MARK: --SectionLogic
 extension PeopleVC{
     fileprivate enum Section: Int{
         case main
