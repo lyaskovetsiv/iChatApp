@@ -27,7 +27,7 @@ class ProfileVC: UIViewController {
         self.imageView.image = nil
         super.init(nibName: nil, bundle: nil)
     }
-    
+        
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -35,6 +35,7 @@ class ProfileVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        
     }
     
     private func setupView(){
@@ -50,9 +51,21 @@ class ProfileVC: UIViewController {
         containerView.addSubview(aboutMeLabel)
         containerView.addSubview(textField)
     }
-
+    
+    @objc private func sendMessage(){
+        guard let message = textField.text, textField.text != "" else { return }
+        self.dismiss(animated: true) {
+            FirestoreService.shared.createWaitingChat(message: message, reciever: self.user) { result in
+                switch result{
+                    case .success():
+                    UIApplication.getTopViewController()?.showAlert(title: "Success", message: "You message was send to \(self.user.userName)")
+                case .failure(let error):
+                    UIApplication.getTopViewController()?.showAlert(title: "Error", message: "Unknown error. You can't send message to this person")
+                }
+            }
+        }
+    }
 }
-
 
 //MARK: --Constraits
 extension ProfileVC{
@@ -115,19 +128,6 @@ extension ProfileVC{
         
     }
     
-    @objc private func sendMessage(){
-        guard let message = textField.text, textField.text != "" else { return }
-        self.dismiss(animated: true) {
-            FirestoreService.shared.createWaitingChat(message: message, reciever: self.user) { result in
-                switch result{
-                    case .success():
-                    UIApplication.getTopViewController()?.showAlert(title: "Congratulations", message: "You message was send to selected person!")
-                case .failure(let error):
-                    UIApplication.getTopViewController()?.showAlert(title: "Error", message: "Unknown error. You can't send message to this person")
-                }
-            }
-            
-        }
-    }
 }
+
 

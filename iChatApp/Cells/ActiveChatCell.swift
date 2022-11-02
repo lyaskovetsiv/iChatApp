@@ -20,7 +20,6 @@ class ActiveChatCell: UICollectionViewCell, ConfiguringCell {
     
     override init(frame: CGRect){
         super.init(frame: frame)
-        
         setupCell()
         addSubview(userImageView)
         addSubview(stackView)

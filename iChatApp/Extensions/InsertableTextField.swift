@@ -64,26 +64,3 @@ class InsertableTextField: UITextField{
         return rect
     }
 }
-
-
-//MARK: --Canvas
-//import SwiftUI
-//struct InsertableTextFieldProvider: PreviewProvider{
-//    
-//    static var previews: some View {
-//        ContainerView()
-//    }
-//    
-//    struct ContainerView: UIViewControllerRepresentable{
-//        
-//        let viewController = ProfileVC()
-//        
-//        func makeUIViewController(context: Context) -> ProfileVC {
-//            return viewController
-//        }
-//        
-//        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-//            
-//        }
-//    }
-//}

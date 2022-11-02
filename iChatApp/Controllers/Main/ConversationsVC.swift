@@ -53,18 +53,18 @@ class ConversationsVC: UIViewController {
     }
     
     private func setupListeners(){
+        
         waitingChatsListener = ListenerService.shared.chatsObserve(chats: waitingChats, kindofChat: "waitingChats", completionBlock: { result in
             switch result{
-            case .success(let mChats):
-                //FIXME: Не всплывает, если один чат!
-                if !self.waitingChats.isEmpty, self.waitingChats.count <= mChats.count {
-                    let chatRequestVC = ChatRequestVC(chat: mChats.last!)
-                    self.present(chatRequestVC, animated: true, completion: nil)
-                }
-                self.waitingChats = mChats
-                self.updateDataSource()
-            case .failure(let error):
-                self.showAlert(title: "Error", message: error.localizedDescription)
+                case .success(let mChats):
+                    if !self.waitingChats.isEmpty, self.waitingChats.count <= mChats.count {
+                        let chatRequestVC = ChatRequestVC(chat: mChats.last!)
+                        self.present(chatRequestVC, animated: true, completion: nil)
+                    }
+                    self.waitingChats = mChats
+                    self.updateDataSource()
+                case .failure(let error):
+                    self.showAlert(title: "Error", message: error.localizedDescription)
             }
         })
         
@@ -114,14 +114,14 @@ extension ConversationsVC: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let chat = self.dataSource.itemIdentifier(for: indexPath) else {return}
         guard let section = ConversationsVC.Section(rawValue: indexPath.section) else {return}
-        
         switch section{
             case .waitingChats:
                 let vc = ChatRequestVC(chat: chat)
                 vc.delegate = self
                 self.present(vc, animated: true, completion: nil)
             case .activeChats:
-                print("")
+                let vc = ChatVC(currentUser: currentUser, chat: chat)
+                navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

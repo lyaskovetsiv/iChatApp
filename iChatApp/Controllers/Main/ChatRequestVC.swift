@@ -59,13 +59,11 @@ class ChatRequestVC: UIViewController {
     }
     
     private func setupView(){
-        
         view.addSubview(imageView)
         view.addSubview(containerView)
         setupContainerView()
         setupConstraits()
         imageView.sd_setImage(with: URL(string: chat.friendUserImageURL), completed: nil)
-        
     }
     
     private func setupContainerView(){
