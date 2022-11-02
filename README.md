@@ -19,14 +19,16 @@
 | ------------- | ------------- | ------------- | ------------- |
 
 **Main Screens**:
-|  <img width="374" alt="Снимок экрана 2022-11-02 в 20 09 04" src="https://user-images.githubusercontent.com/100786077/199555930-b2be79a1-d98f-4f36-b826-e6b89bb0b541.png"> | <img width="408" alt="Снимок экрана 2022-11-02 в 23 38 49" src="https://user-images.githubusercontent.com/100786077/199598397-fe44693f-1be5-4788-a555-9aeaa5de6ec9.png"> | <img width="409" alt="Снимок экрана 2022-11-02 в 23 40 39" src="https://user-images.githubusercontent.com/100786077/199598406-36a06b5f-5c10-40f3-8f6a-d06284234acf.png"> |
+|  <img width="374" alt="Снимок экрана 2022-11-02 в 20 09 04" src="https://user-images.githubusercontent.com/100786077/199555930-b2be79a1-d98f-4f36-b826-e6b89bb0b541.png"> | <img width="409" alt="Снимок экрана 2022-11-02 в 23 40 39" src="https://user-images.githubusercontent.com/100786077/199598406-36a06b5f-5c10-40f3-8f6a-d06284234acf.png"> | <img width="408" alt="Снимок экрана 2022-11-02 в 23 38 49" src="https://user-images.githubusercontent.com/100786077/199598397-fe44693f-1be5-4788-a555-9aeaa5de6ec9.png"> |
 | ------------- | ------------- | ------------- |
 
 **Additional Screens**:
+| <img width="382" alt="Снимок экрана 2022-11-02 в 20 12 41" src="https://user-images.githubusercontent.com/100786077/199556658-0c0aad22-c770-41c8-ba26-78fd4993a5c7.png"> | <img width="379" alt="Снимок экрана 2022-11-02 в 20 14 17" src="https://user-images.githubusercontent.com/100786077/199556664-c78fdbb0-f71d-47ba-8c68-190803042c97.png"> |
+| ------------- | ------------- |
 
-<img width="382" alt="Снимок экрана 2022-11-02 в 20 12 41" src="https://user-images.githubusercontent.com/100786077/199556658-0c0aad22-c770-41c8-ba26-78fd4993a5c7.png">
 
-<img width="379" alt="Снимок экрана 2022-11-02 в 20 14 17" src="https://user-images.githubusercontent.com/100786077/199556664-c78fdbb0-f71d-47ba-8c68-190803042c97.png">
+
+
 
 
 
